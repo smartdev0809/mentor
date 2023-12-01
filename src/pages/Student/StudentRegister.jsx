@@ -1,8 +1,6 @@
-import React from 'react'
-import { Register } from '../../components'
+import React from "react";
+import { Register } from "../../components";
 
 export const StudentRegister = () => {
-  return (
-    <Register/>
-  )
-}
+  return <Register role="student" />;
+};

@@ -6,7 +6,7 @@ export const TeacherLogin = () => {
   return (
     <>
       <Link to="/teacher/signup">Register</Link>
-      <Login />
+      <Login role="teacher"/>
     </>
   );
 };
