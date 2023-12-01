@@ -10,10 +10,24 @@ import {
 } from "../../assets";
 import { useGetFactsMutation } from "../../services";
 import toast from "react-hot-toast";
+import { auth, db } from "../../../firebase";
+import { onAuthStateChanged } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import {
+  addDoc,
+  collection,
+  getDocs,
+  limit,
+  orderBy,
+  query,
+  serverTimestamp,
+  where,
+} from "firebase/firestore/lite";
 
 const huggingFaceToken = import.meta.env.VITE_HUGGING_FACE_TOKEN;
 
 export const FactGenerator = () => {
+  const navigate = useNavigate();
   const [fact, setFact] = useState({
     prompt: "",
     facts: [],
@@ -25,13 +39,50 @@ export const FactGenerator = () => {
   const [imageLoading, setImageLoading] = useState(false);
   const [imageError, setImageError] = useState(null);
 
-  useEffect(() => {
-    const factsFromLocalStorage = JSON.parse(localStorage.getItem("myfacts"));
+  const [user, setUser] = useState(null);
 
-    if (factsFromLocalStorage) {
-      setAllFacts(factsFromLocalStorage);
+  useEffect(() => {
+    onAuthStateChanged(auth, (user_) => {
+      setUser(user_);
+      !user_ && navigate("/student/signin");
+    });
+  }, [user]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const querySnapshot = await getDocs(
+        query(
+          collection(db, "facts-generator"),
+          where("userId", "==", user?.uid),
+          orderBy("timestamp", "desc"),
+          limit(50)
+        )
+      );
+      const factsFromStorage = querySnapshot?.docs?.map((doc) => {
+        if (doc != undefined) {
+          return JSON.parse(doc?.data()?.history);
+        }
+      });
+      if (factsFromStorage) {
+        setAllFacts(factsFromStorage);
+      }
     }
-  }, []);
+    if (user?.uid != undefined) {
+      fetchData();
+    }
+  }, [user]);
+
+  const saveHistory = async (history) => {
+    try {
+      await addDoc(collection(db, "facts-generator"), {
+        userId: user?.uid,
+        history: JSON.stringify(history),
+        timestamp: serverTimestamp(),
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const generateImage = async (data) => {
     const response = await fetch(
@@ -87,7 +138,7 @@ export const FactGenerator = () => {
         setFact(newFact);
         setImageLoading(false);
         setAllFacts(updatedAllFacts);
-        localStorage.setItem("myfacts", JSON.stringify(updatedAllFacts));
+        await saveHistory(newFact);
       }
     } catch (error) {
       setImageError(error);
