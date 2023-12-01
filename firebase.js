@@ -6,13 +6,21 @@ import { getFirestore } from "firebase/firestore/lite";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+
+const apiKey = import.meta.env.VITE_FIREBASE_API_KEY;
+const authDomain = import.meta.env.VITE_FIREBASE_AUTH_DOMAIN;
+const projectId = import.meta.env.VITE_FIREBASE_PROJECT_ID;
+const storageBucket = import.meta.env.VITE_FIREBASE_STORAGE_BUCKET;
+const messagingSenderId = import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID;
+const appId = import.meta.env.VITE_FIREBASE_APP_ID;
+
 const firebaseConfig = {
-  apiKey: "AIzaSyCQvJryScHqSaXd91YGEWWAiiAJVeGwBpg",
-  authDomain: "mentor-sphere.firebaseapp.com",
-  projectId: "mentor-sphere",
-  storageBucket: "mentor-sphere.appspot.com",
-  messagingSenderId: "761504573858",
-  appId: "1:761504573858:web:2f16069887b0b3fa2ceafb"
+  apiKey,
+  authDomain,
+  projectId,
+  storageBucket,
+  messagingSenderId,
+  appId,
 };
 
 // Initialize Firebase
@@ -20,4 +28,4 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-export {app, auth, db};
+export { app, auth, db };
