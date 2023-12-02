@@ -1,1 +1,2 @@
-export * from './FactGenerator';
+export * from "./FactGenerator";
+export * from "./LessonPlanGenerator";

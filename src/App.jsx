@@ -11,7 +11,7 @@ import {
   TeacherDashboard,
 } from "./pages";
 import { Toaster } from "react-hot-toast";
-import { FactGenerator } from "./pages/Tools";
+import { FactGenerator, LessonPlanGenerator } from "./pages/Tools";
 
 function App() {
   return (
@@ -29,6 +29,7 @@ function App() {
           <Route path="/teacher/dashboard" Component={TeacherDashboard} />
           <Route path="/verify-email" Component={VerifyEmail} />
           <Route path="/tool/fact-generator" Component={FactGenerator} />
+          <Route path="/tool/lesson-plan-generator" Component={LessonPlanGenerator} />
         </Routes>
       </Router>
     </>
