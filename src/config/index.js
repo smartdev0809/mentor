@@ -1,3 +1,4 @@
+import { facts } from "../assets";
 export const PRODUCT_CATEGORIES = [
     {
       label: 'UI Kits',
@@ -6,17 +7,17 @@ export const PRODUCT_CATEGORIES = [
         {
           name: 'Editor picks',
           href: `/products?category=ui_kits`,
-          imageSrc: '/nav/ui-kits/mixed.jpg',
+          imageSrc: facts,
         },
         {
           name: 'New Arrivals',
           href: '/products?category=ui_kits&sort=desc',
-          imageSrc: '/nav/ui-kits/blue.jpg',
+          imageSrc: facts,
         },
         {
           name: 'Bestsellers',
           href: '/products?category=ui_kits',
-          imageSrc: '/nav/ui-kits/purple.jpg',
+          imageSrc: facts,
         },
       ],
     },
@@ -27,17 +28,22 @@ export const PRODUCT_CATEGORIES = [
         {
           name: 'Favorite Icon Picks',
           href: `/products?category=icons`,
-          imageSrc: '/nav/icons/picks.jpg',
+          imageSrc: facts,
         },
         {
           name: 'New Arrivals',
           href: '/products?category=icons&sort=desc',
-          imageSrc: '/nav/icons/new.jpg',
+          imageSrc: facts,
         },
         {
           name: 'Bestselling Icons',
           href: '/products?category=icons',
-          imageSrc: '/nav/icons/bestsellers.jpg',
+          imageSrc: facts,
+        },
+        {
+          name: 'Bestselling Icons',
+          href: '/products?category=icons',
+          imageSrc: facts,
         },
       ],
     },

@@ -89,7 +89,7 @@ export const Home = () => {
         <div className="flex-grow flex-1">
           <div className="max-w-wrapper">
             <div className="py-20 mx-auto text-center flex flex-col items-center max-w-3xl">
-              <h1 className="text-4xl font-bold tracking-tight text-gray-900">
+              <h1 className="text-4xl font-extrabold tracking-tight text-gray-900">
                 Your marketplace for high-quality&nbsp;
                 <span className="text-[var(--primary)]">digital assets</span>.
               </h1>
@@ -108,7 +108,7 @@ export const Home = () => {
             </div>
           </div>
         </div>
-        <section className="border-t border-gray-200">
+        <section>
           <div className="max-w-wrapper py-20">
             <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-0">
               {perks.map((perk) => (
