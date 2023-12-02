@@ -70,7 +70,7 @@ export const MobileNav = () => {
                       </div>
                     </div>
 
-                    <div className='grid grid-cols-2 gap-y-10 gap-x-4'>
+                    <div className='grid grid-cols-3 gap-y-10 gap-x-4'>
                       {category.featured.map((item) => (
                         <div
                           key={item.name}

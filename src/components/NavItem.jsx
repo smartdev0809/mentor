@@ -6,9 +6,8 @@ export const NavItem = ({ isAnyOpen, category, handleOpen, close, isOpen }) => {
     <div className="flex">
       <div className="relative flex items-center">
         <button
-          className="gap-1.5"
+          className={`gap-1.5 ${isOpen ? 'btn-secondary' : 'btn-ghost'}`}
           onClick={handleOpen}
-          //   variant={isOpen ? 'secondary' : 'ghost'}
         >
           {category.label}
           <ChevronDown
@@ -34,18 +33,18 @@ export const NavItem = ({ isAnyOpen, category, handleOpen, close, isOpen }) => {
           <div className="relative bg-white">
             <div className="mx-auto max-w-7xl px-8">
               <div className="grid grid-cols-4 gap-x-8 gap-y-10 py-16">
-                <div className="col-span-4 col-start-1 grid grid-cols-3 gap-x-8">
+                <div className="col-span-4 col-start-1 grid grid-cols-6 gap-x-8">
                   {category.featured.map((item) => (
                     <div
                       onClick={() => close}
                       key={item.name}
                       className="group relative text-base sm:text-sm"
                     >
-                      <div className="relative aspect-video overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+                      <div className="relative aspect-square overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
                         <img
                           src={item.imageSrc}
-                          alt="product category image"
                           fill
+                          alt="product category image"
                           className="object-cover object-center"
                         />
                       </div>

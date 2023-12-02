@@ -8,7 +8,7 @@ export const Pricing = ({ heading, subheading, plans, page }) => {
     <section
       id="pricing"
       aria-labelledby="pricing-title"
-      className="container border-t border-gray-200 bg-gray-50 py-20 sm:py-32 max-w-full"
+      className="container border-t border-gray-200 bg-gray-50/50 py-20 sm:py-32 max-w-full"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal direction="bottom">

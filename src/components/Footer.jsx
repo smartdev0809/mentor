@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export const Footer = ({ logo }) => {
   return (
     <Reveal direction="bottom">
-      <footer className="bg-white flex-grow-0 border-t border-gray-200">
+      <footer className="bg-transparent flex-grow-0 border-t border-gray-200">
         <div className="max-w-wrapper">
           <div className="py-10 md:py-0 md:flex md:items-center md:justify-between">
             <div className="text-center md:text-left">
