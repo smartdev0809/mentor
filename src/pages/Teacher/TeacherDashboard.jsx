@@ -1,7 +1,7 @@
 import React from "react";
 import { Reveal, Tool, Header } from "../../components";
 import { MainLayout } from "../../layouts";
-import { facts } from "../../assets";
+import { facts, plan, ppt, quiz } from "../../assets";
 
 const tools = [
   {
@@ -9,21 +9,21 @@ const tools = [
     detail:
       "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
     link: "/tool/fact-generator",
-    image: facts,
+    image: plan,
   },
   {
     name: "Presentation Creator",
     detail:
       "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
     link: "/tool/fact-generator",
-    image: facts,
+    image: ppt,
   },
   {
     name: "Quiz Generator",
     detail:
       "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
     link: "/tool/fact-generator",
-    image: facts,
+    image: quiz,
   },
   {
     name: "Worksheets Generator",

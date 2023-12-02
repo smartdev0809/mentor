@@ -10,7 +10,7 @@ export const Tool = ({ tool }) => {
           <img
             src={tool.image}
             alt={tool.name}
-            className="object-cover rounded-lg h-56 w-full"
+            className="object-cover rounded-lg h-64 w-full"
           />
           <p className="relative mt-5 flex text-2xl tracking-tight text-[var(--primary)]">
             {tool.name}

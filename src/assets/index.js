@@ -7,6 +7,17 @@ import search from "./search.svg";
 import download from "./download.png";
 import logo from "./logo.svg";
 import facts from "./facts.jpeg";
+import art from "./art.jpeg";
+import programmer from "./programmer.jpeg";
+import history from "./history.jpeg";
+import articles from "./articles.jpeg";
+import examples from "./examples.jpeg";
+import puzzle from "./puzzle.jpeg";
+import debate from "./debate.jpeg";
+import writing from "./writing.jpeg";
+import plan from "./plan.jpeg";
+import ppt from "./ppt.jpeg";
+import quiz from "./quiz.jpeg";
 import factsBg from "./facts-bg.jpeg";
 
 export {
@@ -19,5 +30,16 @@ export {
   search,
   download,
   facts,
+  art,
+  puzzle,
+  programmer,
+  history,
+  articles,
+  examples,
+  debate,
+  writing,
+  plan,
+  ppt,
+  quiz,
   factsBg,
 };

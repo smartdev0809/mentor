@@ -1,6 +1,16 @@
 import React from "react";
 import { Reveal, Tool, Header } from "../../components";
-import { facts } from "../../assets";
+import {
+  facts,
+  art,
+  puzzle,
+  programmer,
+  history,
+  articles,
+  examples,
+  debate,
+  writing,
+} from "../../assets";
 import { MainLayout } from "../../layouts";
 
 const tools = [
@@ -16,42 +26,42 @@ const tools = [
     detail:
       "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
     link: "/tool/fact-generator",
-    image: facts,
+    image: examples,
   },
   {
     name: "Art Generator",
     detail:
       "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
     link: "/tool/fact-generator",
-    image: facts,
+    image: art,
   },
   {
     name: "Puzzles Generator",
     detail:
       "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
     link: "/tool/fact-generator",
-    image: facts,
+    image: puzzle,
   },
   {
     name: "Debate Partner",
     detail:
       "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
     link: "/tool/fact-generator",
-    image: facts,
+    image: debate,
   },
   {
     name: "Creative Writing Reviewer",
     detail:
       "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
     link: "/tool/fact-generator",
-    image: facts,
+    image: writing,
   },
   {
     name: "Pair Programmer",
     detail:
       "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
     link: "/tool/fact-generator",
-    image: facts,
+    image: programmer,
   },
   {
     name: "Design Thinking Partner",
@@ -72,14 +82,14 @@ const tools = [
     detail:
       "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
     link: "/tool/fact-generator",
-    image: facts,
+    image: history,
   },
   {
     name: "Article Summarizer",
     detail:
       "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
     link: "/tool/fact-generator",
-    image: facts,
+    image: articles,
   },
   {
     name: "YouTube Video Summarizer",
