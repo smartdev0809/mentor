@@ -7,6 +7,7 @@ import search from "./search.svg";
 import download from "./download.png";
 import logo from "./logo.svg";
 import facts from "./facts.jpeg";
+import factsBg from "./facts-bg.jpeg";
 
 export {
   logo,
@@ -18,4 +19,5 @@ export {
   search,
   download,
   facts,
+  factsBg,
 };

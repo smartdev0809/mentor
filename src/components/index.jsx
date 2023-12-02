@@ -10,3 +10,4 @@ export * from "./NavItems";
 export * from "./NavItem";
 export * from "./MobileNav";
 export * from "./UserAccountNav";
+export * from "./Header";

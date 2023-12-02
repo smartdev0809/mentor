@@ -89,7 +89,7 @@ export const Home = () => {
         <div className="flex-grow flex-1">
           <div className="max-w-wrapper">
             <div className="py-20 mx-auto text-center flex flex-col items-center max-w-3xl">
-              <h1 className="text-4xl font-extrabold tracking-tight text-gray-900">
+              <h1 className="text-5xl font-extrabold tracking-tight text-gray-900">
                 Your marketplace for high-quality&nbsp;
                 <span className="text-[var(--primary)]">digital assets</span>.
               </h1>
