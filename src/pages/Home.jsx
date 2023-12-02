@@ -108,7 +108,7 @@ export const Home = () => {
             </div>
           </div>
         </div>
-        <section className="border-t border-gray-200 bg-gray-50">
+        <section className="border-t border-gray-200">
           <div className="max-w-wrapper py-20">
             <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-0">
               {perks.map((perk) => (
@@ -126,7 +126,7 @@ export const Home = () => {
                     <h3 className="text-base font-medium text-gray-900">
                       {perk.name}
                     </h3>
-                    <p className="mt-3 text-sm text-[var(--muted-foreground)]">
+                    <p className="mt-3 text-sm text-[var(--foreground)]">
                       {perk.description}
                     </p>
                   </div>
@@ -139,7 +139,6 @@ export const Home = () => {
           heading={pricingHeading}
           subheading={pricingSubheading}
           plans={plans}
-          page="creativerse"
         />
         <Faqs faqs={faqs} />
       </main>
