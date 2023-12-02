@@ -1,7 +1,7 @@
 import React from "react";
 import { Disclosure } from "@headlessui/react";
 import { ChevronUp } from "lucide-react";
-import Reveal from "./Reveal";
+import { Reveal } from "./Reveal";
 
 export const Faqs = ({ faqs, page }) => {
   return (
@@ -40,17 +40,25 @@ export const Faqs = ({ faqs, page }) => {
                     <>
                       <Disclosure.Button
                         className={`flex w-full justify-between rounded-lg ${
-                          page == "creativerse" ? "bg-[#FCE3D5]" : page=="tunez" ? "bg-[#dcf2e1]": "bg-sky-100"
+                          page == "creativerse"
+                            ? "bg-[#FCE3D5]"
+                            : page == "tunez"
+                            ? "bg-[#dcf2e1]"
+                            : "bg-sky-100"
                         } px-5 py-4 ${
                           index !== faqs.length - 1 && "mb-2"
                         } text-left ${
                           page == "creativerse"
                             ? "hover:bg-[#FCDBC7]"
-                            : page=="tunez" ? "hover:bg-[#d3f8dd]" : "hover:bg-sky-200"
+                            : page == "tunez"
+                            ? "hover:bg-[#d3f8dd]"
+                            : "hover:bg-sky-200"
                         } focus:outline-none text-lg font-medium leading-6 ${
                           page == "creativerse"
                             ? "text-[#EF864A]"
-                            : page=="tunez" ? "text-[#56df78]" : "text-sky-500"
+                            : page == "tunez"
+                            ? "text-[#56df78]"
+                            : "text-sky-500"
                         }`}
                       >
                         <span>{item.question}</span>
@@ -60,7 +68,9 @@ export const Faqs = ({ faqs, page }) => {
                           } h-5 w-5 ${
                             page == "creativerse"
                               ? "text-[#EF864A]"
-                              : page=="tunez" ? "text-[#70f892]" : "text-sky-500"
+                              : page == "tunez"
+                              ? "text-[#70f892]"
+                              : "text-sky-500"
                           }`}
                         />
                       </Disclosure.Button>

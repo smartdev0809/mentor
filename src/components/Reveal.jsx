@@ -1,7 +1,7 @@
 import { useAnimation, useInView, motion } from "framer-motion";
 import React, { useEffect, useRef } from "react";
 
-const Reveal = ({ children, direction, index = 0 }) => {
+export const Reveal = ({ children, direction, index = 0 }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const mainControls = useAnimation();
@@ -90,5 +90,3 @@ const Reveal = ({ children, direction, index = 0 }) => {
     </div>
   );
 };
-
-export default Reveal;

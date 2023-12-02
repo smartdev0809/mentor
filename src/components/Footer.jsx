@@ -1,5 +1,5 @@
 import React from "react";
-import Reveal from "./Reveal";
+import { Reveal } from "./Reveal";
 import { Facebook, Instagram, Linkedin, Mail } from "lucide-react";
 
 export const Footer = ({ logo, name, slogan, page, footerTabs, appLink }) => {
@@ -10,11 +10,11 @@ export const Footer = ({ logo, name, slogan, page, footerTabs, appLink }) => {
           <div className="flex flex-col items-start justify-between gap-y-12 pb-6 pt-16 lg:flex-row lg:items-center lg:py-16">
             <div>
               <div className="flex items-center text-gray-900">
-              <img
-                    src={logo}
-                    alt="Logo"
-                    className="w-[50%] h-[50%] object-contain"
-                  />
+                <img
+                  src={logo}
+                  alt="Logo"
+                  className="w-[50%] h-[50%] object-contain"
+                />
                 <div className="ml-4">
                   {name && <p className="text-base font-semibold">{name}</p>}
                   {slogan && <p className="mt-1 text-sm">{slogan}</p>}
@@ -41,7 +41,9 @@ export const Footer = ({ logo, name, slogan, page, footerTabs, appLink }) => {
                   className={`absolute inset-0 h-full w-full stroke-gray-300 transition-colors ${
                     page == "creativerse"
                       ? "group-hover:stroke-[#EF864A]"
-                      : page=="tunez" ? "group-hover:stroke-[#99EBAD]" : "group-hover:stroke-sky-500"
+                      : page == "tunez"
+                      ? "group-hover:stroke-[#99EBAD]"
+                      : "group-hover:stroke-sky-500"
                   }`}
                 >
                   <path
@@ -79,7 +81,9 @@ export const Footer = ({ logo, name, slogan, page, footerTabs, appLink }) => {
                 className={
                   page == "creativerse"
                     ? "hover:text-[#EF864A]"
-                    : page="tunez" ? "hover:text-[#99EBAD]": "hover:text-sky-500"
+                    : (page = "tunez"
+                        ? "hover:text-[#99EBAD]"
+                        : "hover:text-sky-500")
                 }
               >
                 <Linkedin
@@ -94,7 +98,9 @@ export const Footer = ({ logo, name, slogan, page, footerTabs, appLink }) => {
                 className={
                   page == "creativerse"
                     ? "hover:text-[#EF864A]"
-                    : page="tunez" ? "hover:text-[#99EBAD]": "hover:text-sky-500"
+                    : (page = "tunez"
+                        ? "hover:text-[#99EBAD]"
+                        : "hover:text-sky-500")
                 }
               >
                 <Facebook
@@ -109,7 +115,9 @@ export const Footer = ({ logo, name, slogan, page, footerTabs, appLink }) => {
                 className={
                   page == "creativerse"
                     ? "hover:text-[#EF864A]"
-                    : page="tunez" ? "hover:text-[#99EBAD]": "hover:text-sky-500"
+                    : (page = "tunez"
+                        ? "hover:text-[#99EBAD]"
+                        : "hover:text-sky-500")
                 }
               >
                 <Instagram
@@ -124,7 +132,9 @@ export const Footer = ({ logo, name, slogan, page, footerTabs, appLink }) => {
                 className={
                   page == "creativerse"
                     ? "hover:text-[#EF864A]"
-                    : page="tunez" ? "hover:text-[#99EBAD]": "hover:text-sky-500"
+                    : (page = "tunez"
+                        ? "hover:text-[#99EBAD]"
+                        : "hover:text-sky-500")
                 }
               >
                 <Mail

@@ -10,7 +10,7 @@
     --card-foreground: #050600;
     --popover: #ffffff;
     --popover-foreground: #0a0b0d;
-    --primary: #d68d3d;
+    --primary: #ea580c;
     --primary-foreground: #f8faf9;
     --secondary: #f5f9f1;
     --secondary-foreground: #191e1a;
@@ -54,7 +54,7 @@ body {
 }
 
 .max-w-wrapper {
-  @apply mx-auto w-full max-w-screen-xl px-2.5 md:px-20
+  @apply mx-auto w-full max-w-screen-xl px-2.5 md:px-20;
 }
 
 .btn-default {
