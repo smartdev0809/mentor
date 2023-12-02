@@ -8,18 +8,18 @@ export const Pricing = ({ heading, subheading, plans, page }) => {
     <section
       id="pricing"
       aria-labelledby="pricing-title"
-      className="container border-t border-gray-200 bg-gray-100 py-20 sm:py-32 max-w-full"
+      className="container border-t border-gray-200 bg-gray-50 py-20 sm:py-32 max-w-full"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal direction="bottom">
           <div className="mx-auto max-w-2xl text-center">
             <h2
               id="pricing-title"
-              className="text-3xl font-medium tracking-tight text-gray-900"
+              className="text-3xl font-bold tracking-tight text-gray-900 text-center"
             >
               {heading}
             </h2>
-            <p className="mt-2 text-lg text-gray-600">{subheading}</p>
+            <p className="mt-6 text-lg max-w-prose text-gray-600 text-center">{subheading}</p>
           </div>
         </Reveal>
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 items-start gap-x-8 gap-y-10 sm:mt-20 lg:max-w-none lg:grid-cols-3">
@@ -44,13 +44,7 @@ export const Pricing = ({ heading, subheading, plans, page }) => {
                         {plan.features.map((item, index) => (
                           <li key={index} className="flex items-center py-2">
                             <CheckCircle
-                              className={
-                                page == "creativerse"
-                                  ? `text-[#EF864A]`
-                                  : page == "tunez"
-                                  ? "text-[#99EBAD]"
-                                  : "text-[#EF864A]"
-                              }
+                              className="text-[var(--primary)]"
                               width={24}
                               height={24}
                             />
@@ -60,7 +54,7 @@ export const Pricing = ({ heading, subheading, plans, page }) => {
                       </ul>
                     </div>
                     <Link
-                      className="inline-flex justify-center rounded-lg py-3 px-3 text-sm font-semibold outline-2 outline-offset-2 transition-colors bg-gray-800 text-white hover:bg-gray-900 active:bg-gray-800 active:text-white/80 mt-6"
+                      className="inline-flex justify-center rounded-lg py-3 px-3 text-sm font-semibold outline-2 outline-offset-2 transition-colors bg-gray-900 text-[var(--secondary)] hover:bg-gray-900 active:bg-gray-800 active:text-white/80 mt-6"
                       aria-label="Get started with the Starter plan for [object Object]"
                       href="/"
                     >
@@ -102,13 +96,7 @@ export const Pricing = ({ heading, subheading, plans, page }) => {
                 </ul>
               </div>
               <Link
-                className={`inline-flex justify-center rounded-lg py-3 px-3 text-sm font-semibold outline-2 outline-offset-2 transition-colors relative overflow-hidden ${
-                  page == "creativerse"
-                    ? "bg-[#EF864A]"
-                    : page == "tunez"
-                    ? "bg-[#99EBAD]"
-                    : "bg-[#99EBAD]"
-                } text-white before:absolute before:inset-0 active:before:bg-transparent hover:before:bg-white/10 active:bg-[#EF864A] active:text-white/80 before:transition-colors mt-6`}
+                className={`inline-flex justify-center rounded-lg py-3 px-3 text-sm font-semibold outline-2 outline-offset-2 transition-colors relative overflow-hidden bg-[var(--primary)] text-[var(--primary-foreground)] before:absolute before:inset-0 active:before:bg-transparent hover:before:bg-white/10 active:bg-[#EF864A] active:text-white/80 before:transition-colors mt-6`}
                 aria-label="Get started with the VIP plan for [object Object]"
                 href="/"
               >

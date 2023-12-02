@@ -23,6 +23,7 @@ import {
   serverTimestamp,
   where,
 } from "firebase/firestore/lite";
+import './FactGenerator.css';
 
 const huggingFaceToken = import.meta.env.VITE_HUGGING_FACE_TOKEN;
 
