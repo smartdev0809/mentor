@@ -5,3 +5,7 @@ export * from "./Faqs";
 export * from "./Footer";
 export * from "./Reveal";
 export * from "./Pricing";
+export * from "./NavItems";
+export * from "./NavItem";
+export * from "./MobileNav";
+export * from "./UserAccountNav";

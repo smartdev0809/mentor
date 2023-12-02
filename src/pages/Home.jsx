@@ -84,6 +84,7 @@ const perks = [
 export const Home = () => {
   return (
     <>
+    <Navbar />
       <main className="flex flex-col min-h-screen">
         <div className="flex-grow flex-1">
           <div className="max-w-wrapper">
@@ -107,7 +108,6 @@ export const Home = () => {
             </div>
           </div>
         </div>
-        {/* <Navbar /> */}
         <section className="border-t border-gray-200 bg-gray-50">
           <div className="max-w-wrapper py-20">
             <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-0">
