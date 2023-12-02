@@ -6,6 +6,7 @@ import curious from "./curious.png";
 import search from "./search.svg";
 import download from "./download.png";
 import logo from "./logo.svg";
+import facts from "./facts.jpeg";
 
 export {
   logo,
@@ -16,4 +17,5 @@ export {
   curious,
   search,
   download,
+  facts,
 };

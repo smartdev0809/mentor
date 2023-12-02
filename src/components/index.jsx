@@ -5,3 +5,4 @@ export * from "./Faqs";
 export * from "./Footer";
 export * from "./Reveal";
 export * from "./Pricing";
+export * from "./Tool";

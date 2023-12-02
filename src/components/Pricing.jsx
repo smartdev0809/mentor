@@ -1,6 +1,6 @@
 import { CheckCircle } from "lucide-react";
 import React from "react";
-import Reveal from "./Reveal";
+import { Reveal } from "./Reveal";
 import { Link } from "react-router-dom";
 
 export const Pricing = ({ heading, subheading, plans, page }) => {
