@@ -12,10 +12,10 @@ export const Tool = ({ tool }) => {
             alt={tool.name}
             className="object-cover rounded-lg h-56 w-full"
           />
-          <p className="relative mt-5 flex text-2xl tracking-tight text-gray-900">
+          <p className="relative mt-5 flex text-2xl tracking-tight text-[var(--primary)]">
             {tool.name}
           </p>
-          <p className="mt-3 text-sm text-gray-700">{tool.detail}</p>
+          <p className="mt-3 text-md text-gray-700">{tool.detail}</p>
         </section>
       </Link>
     </Reveal>

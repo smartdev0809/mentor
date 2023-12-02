@@ -1,6 +1,7 @@
 import React from "react";
-import { Reveal, Tool } from "../../components";
+import { Reveal, Tool, Header } from "../../components";
 import { facts } from "../../assets";
+import { MainLayout } from "../../layouts";
 
 const tools = [
   {
@@ -98,29 +99,21 @@ const tools = [
 
 export const StudentDashboard = () => {
   return (
-    <section
-      id="student-dashboard"
-      aria-labelledby="student-dashboard-title"
-      className="container border-t border-gray-200 bg-gray-100 py-20 sm:py-32 max-w-full"
-    >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <Reveal direction="bottom">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2
-              id="student-dashboard-title"
-              className="text-3xl font-medium tracking-tight text-gray-900"
-            >
-              Student Dashboard
-            </h2>
-            <p className="mt-2 text-lg text-gray-600">Tools</p>
+    <MainLayout>
+      <section
+        id="student-dashboard"
+        aria-labelledby="student-dashboard-title"
+        className="py-20 sm:py-32 max-w-full"
+      >
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Header title="Student" title_="Dashboard" subtitle="Tools" />
+          <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 items-start gap-x-8 gap-y-10 sm:mt-20 lg:max-w-none lg:grid-cols-3">
+            {tools?.map((tool, index) => (
+              <Tool key={index} tool={tool} />
+            ))}
           </div>
-        </Reveal>
-        <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 items-start gap-x-8 gap-y-10 sm:mt-20 lg:max-w-none lg:grid-cols-3">
-          {tools?.map((tool, index) => (
-            <Tool key={index} tool={tool} />
-          ))}
         </div>
-      </div>
-    </section>
+      </section>
+    </MainLayout>
   );
 };

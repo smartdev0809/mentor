@@ -32,7 +32,10 @@ function App() {
           <Route path="/teacher/dashboard" Component={TeacherDashboard} />
           <Route path="/verify-email" Component={VerifyEmail} />
           <Route path="/tool/fact-generator" Component={FactGenerator} />
-          <Route path="/tool/lesson-plan-generator" Component={LessonPlanGenerator} />
+          <Route
+            path="/tool/lesson-plan-generator"
+            Component={LessonPlanGenerator}
+          />
         </Routes>
       </Router>
       </div>
