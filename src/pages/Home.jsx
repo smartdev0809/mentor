@@ -5,45 +5,44 @@ import { ArrowDownToLine, CheckCircle, Leaf } from "lucide-react";
 import { logo, pricinglogo } from "../assets";
 
 const pricingHeading = "Choose Your Plan";
-const pricingSubheading = "Flexible Pricing Options for Every User";
+const pricingSubheading =
+  "Flexible pricing options for every user. Select the tier that best matches your needs and embark on an AI-STEAM learning experience tailored to you.";
 const plans = [
   {
-    name: "Starter",
+    name: "Tier 1: Basic Access",
     detail:
-      "Enjoy the basic features with ads included. You want to try it out as a hobby.",
+      "Suitable for individuals exploring the platform. Basic functionalities for casual users.",
     price: "$0",
     features: [
-      "Ads Included",
-      "5 Free Art Generations Every Day",
-      "No Watermark",
-      "Access to Unlocked Models",
+      "Access to fundamental AI tools for students and educators",
+      "Limited storage and usage capacity",
+      "Basic content library",
     ],
     button: "Get Started for Free",
     image: <img src={pricinglogo} width={28} height={28} alt="Starter Plan" />,
   },
   {
-    name: "Weekly",
-    detail: "Upgrade to our weekly plan for an ad-free experience for 1 week.",
+    name: "Tier 2: Standard Access",
+    detail:
+      "Suitable for students and educators seeking broader AI applications. Enhanced functionalities for regular users.",
     price: "$4.99",
     features: [
-      "No Ads",
-      "Unlimited Art Generations for 1 Week",
-      "No Watermark",
-      "Access to All Models",
+      "Expanded range of AI-powered tools",
+      "Increased storage capacity",
+      "Advanced content library",
     ],
     button: "Subscribe",
     image: <img src={pricinglogo} width={28} height={28} alt="Weekly Plan" />,
   },
   {
-    name: "Monthly",
+    name: "Tier 3: Premium Access",
     detail:
-      "Upgrade to our monthly plan for an ad-free experience for 1 month.",
+      "Suitable for serious learners, educational institutions, and professionals. Comprehensive access for advanced users and organizations.",
     price: "$19.99",
     features: [
-      "No Ads",
-      "Unlimited Art Generations for 1 Month",
-      "No Watermark",
-      "Access to All Models",
+      "Full access to all AI-STEAM tools and resources",
+      "Unlimited storage and usage",
+      "Exclusive premium content and support",
     ],
     button: "Subscribe",
     image: <img src={pricinglogo} width={28} height={28} alt="Monthly Plan" />,
@@ -54,48 +53,74 @@ const footerTabs = [{ name: "Home", link: "/" }];
 
 const faqs = [
   {
-    question: "What is your name?",
+    question:
+      "What are the key benefits of using Mentor Sphere for educators and students?",
     answer:
-      "fdkhfjkhdsjkfhjksd djkkhfkhsjkf jfhdjksfh jkhfjksdhjf jkhfjsdf jkfhjksd.",
+      "Mentor Sphere provides educators with AI-powered tools for creating lesson plans, presentations, and grading, streamlining their workflow and saving time. For students, the platform offers tools to summarize YouTube videos, create flashcards, resumes, and more, enhancing their learning experience and productivity.",
+  },
+  {
+    question:
+      "How does Mentor Sphere integrate artificial intelligence to enhance STEAM education?",
+    answer:
+      "Mentor Sphere integrates artificial intelligence by offering specialized tools tailored for STEAM education, such as simulations, data analysis, and problem-solving applications. These tools provide an interactive and immersive learning experience for students, enhancing their understanding of STEAM subjects through AI-powered applications.",
+  },
+  {
+    question:
+      "What features does Mentor Sphere offer to support personalized learning experiences for students?",
+    answer:
+      "Mentor Sphere offers personalized learning experiences for students through features like adaptive learning algorithms, personalized study plans, and customized content recommendations. By leveraging AI, the platform tailors learning materials to individual student needs, enhancing engagement and knowledge retention.",
+  },
+  {
+    question:
+      "How does Mentor Sphere assist teachers in creating interactive and engaging lesson plans",
+    answer:
+      "Mentor Sphere assists teachers in creating interactive and engaging lesson plans by providing AI-driven content generation tools, interactive multimedia resources, and adaptive learning modules. These features allow educators to develop dynamic and personalized lesson plans that cater to diverse learning styles and academic levels.",
+  },
+  {
+    question:
+      "Can Mentor Sphere adapt to the individual needs and learning styles of students across various subjects?",
+    answer:
+      "Mentor Sphere is designed to adapt to the individual needs of educators and students by offering customizable features, personalized recommendations, and adaptive learning pathways. The platform's AI-powered tools continuously analyze user interactions and learning patterns to tailor the educational experience to the specific needs and preferences of each user.",
   },
 ];
 
 const perks = [
   {
-    name: "Instant Delivery",
+    name: "AI-Powered Teaching Resources",
     Icon: ArrowDownToLine,
     description:
-      "Get your assets delivered to your email in seconds and download them right away.",
+      "Empowering educators with AI tools for lesson planning, presentations, worksheet creation, grading assistance, and more.",
   },
   {
-    name: "Guaranteed Quality",
+    name: "Student-Centric AI Tools",
     Icon: CheckCircle,
     description:
-      "Every asset on our platform is verified by our team to ensure our highest quality standards. Not happy? We offer a 30-day refund guarantee.",
+      "Equipping students with note creation, flashcards, summarization, resume building, and other AI-enhanced learning utilities.",
   },
   {
-    name: "For the Planet",
+    name: "Efficiency and Productivity Boost",
     Icon: Leaf,
     description:
-      "We've pledged 1% of sales to the preservation and restoration of the natural environment.",
+      "Streamlining teaching workflows and fostering effective studying through AI-driven tools for teachers and students alike.",
   },
 ];
 
 export const Home = () => {
   return (
     <>
-    <Navbar />
+      <Navbar />
       <main className="flex flex-col min-h-screen">
         <div className="flex-grow flex-1">
           <div className="max-w-wrapper">
             <div className="py-20 mx-auto text-center flex flex-col items-center max-w-3xl">
               <h1 className="text-5xl font-extrabold tracking-tight text-gray-900">
-                Your marketplace for high-quality&nbsp;
-                <span className="orange_gradient">digital assets</span>.
+                Smart Learning, Bright Futures:
+                <br />
+                <span className="orange_gradient">AI-STEAM Solutions</span>.
               </h1>
               <p className="mt-6 text-lg max-w-prose text-gray-600">
-                Welcome to DigitalHippo. Every asset on our platform is verified
-                by our team to ensure our highest quality standards.
+                Empowering education through innovative AI-STEAM tools for
+                engaged learning experiences.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mt-6">
                 <Link to="/roles" className="btn-default">
