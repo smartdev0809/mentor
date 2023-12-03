@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { copy, loader, tick, curious, download, search } from "../../assets";
+import { copy, loader, tick, curious, search } from "../../assets";
 import { useGetAnswerMutation } from "../../services";
 import toast from "react-hot-toast";
 import { auth, db } from "../../../firebase";
@@ -24,7 +24,6 @@ export const QuizGenerator = () => {
   const [result, setResult] = useState({
     prompt: "",
     input1: "",
-    input2: "",
     answer: "",
   });
   const [allResults, setAllResults] = useState([]);
@@ -44,7 +43,7 @@ export const QuizGenerator = () => {
     async function fetchData() {
       const querySnapshot = await getDocs(
         query(
-          collection(db, "examples-generator"),
+          collection(db, "quiz-generator"),
           where("userId", "==", user?.uid),
           orderBy("timestamp", "desc"),
           limit(50)
@@ -66,7 +65,7 @@ export const QuizGenerator = () => {
 
   const saveHistory = async (history) => {
     try {
-      await addDoc(collection(db, "examples-generator"), {
+      await addDoc(collection(db, "quiz-generator"), {
         userId: user?.uid,
         history: JSON.stringify(history),
         timestamp: serverTimestamp(),
@@ -83,14 +82,11 @@ export const QuizGenerator = () => {
       messages: [
         {
           role: "user",
-          content: `You are a friendly and helpful instructional designer who helps teachers develop effective explanations, analogies and examples in a straightforward way. Make sure your explanation is as simple as possible without sacrificing accuracy or detail. ${
-            result.input1 &&
-            `The learning level of the students is ${result.input1}.`
-          } ${
-            result.input2 && `Additionally note that ${result.input2}.`
-          } Give the teacher a clear and simple 2-paragraph explanation of the topic "${
+          content: `You are a quiz creator of highly diagnostic quizzes. You will make good low-stakes tests and diagnostics. ${
+            result.input1 && `The audience of the quiz is ${result.input1}.`
+          } Construct several multiple choice questions to quiz the audience on the topic "${
             result.prompt
-          }", 2 examples, and an analogy. Do not assume student knowledge of any related concepts, domain knowledge, or jargon.`,
+          }". The questions should be highly relevant and go beyond just facts. Multiple choice questions should include plausible, competitive alternate responses and should not include an "all of the above option." At the end of the quiz, you will provide an answer key and explain the right answer.`,
         },
       ],
     });
@@ -134,7 +130,7 @@ export const QuizGenerator = () => {
                 className="absolute left-0 my-3 ml-3 w-5"
               />
               <textarea
-                placeholder="Tell me the learning level of your students (grade level, college, or professional)."
+                placeholder="For which audience is the quiz?"
                 onChange={(e) => {
                   setResult({ ...result, input1: e.target.value });
                 }}
@@ -142,23 +138,6 @@ export const QuizGenerator = () => {
                 className="prompt_input peer"
                 rows={3}
                 value={result.input1}
-              />
-            </div>
-            <div className="relative flex justify-center items-start w-full">
-              <img
-                src={curious}
-                alt="Curious Icon"
-                className="absolute left-0 my-3 ml-3 w-5"
-              />
-              <textarea
-                placeholder="How does this particular concept or topic fit into your curriculum and what do students already know about the topic?"
-                onChange={(e) => {
-                  setResult({ ...result, input2: e.target.value });
-                }}
-                required
-                className="prompt_input peer"
-                rows={3}
-                value={result.input2}
               />
             </div>
             <form
@@ -171,7 +150,7 @@ export const QuizGenerator = () => {
                 className="absolute left-0 my-2 ml-3 w-5"
               />
               <input
-                placeholder="What topic or concept do you want to explain?"
+                placeholder="What topic, specifically, should the quiz test?"
                 value={result.prompt}
                 onChange={(e) => {
                   setResult({ ...result, prompt: e.target.value });
@@ -207,26 +186,16 @@ export const QuizGenerator = () => {
                     </div> */}
                     <div
                       className="copy_btn"
-                      onClick={() => downloadImage(item.image, item.prompt)}
+                      onClick={() => handleCopy(item.answer)}
                     >
                       <img
-                        src={download}
-                        alt="Download Icon"
+                        src={copied === item.answer ? tick : copy}
+                        alt="Copy Icon"
                         className="w-[50%] h-[50%] object-contain"
                       />
                     </div>
                     <span className="font-semibold">{item.prompt}:</span>{" "}
                     {`${item.answer.substring(0, 50)}...`}
-                  </div>
-                  <div
-                    className="copy_btn"
-                    onClick={() => handleCopy(item.answer)}
-                  >
-                    <img
-                      src={copied === item.answer ? tick : copy}
-                      alt="Copy Icon"
-                      className="w-[50%] h-[50%] object-contain"
-                    />
                   </div>
                 </div>
               ))}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { copy, loader, tick, curious, download, search } from "../../assets";
+import { copy, loader, tick, curious, search } from "../../assets";
 import { useGetAnswerMutation } from "../../services";
 import toast from "react-hot-toast";
 import { auth, db } from "../../../firebase";
@@ -44,7 +44,7 @@ export const PairProgrammer = () => {
     async function fetchData() {
       const querySnapshot = await getDocs(
         query(
-          collection(db, "examples-generator"),
+          collection(db, "pair-programmer"),
           where("userId", "==", user?.uid),
           orderBy("timestamp", "desc"),
           limit(50)
@@ -66,7 +66,7 @@ export const PairProgrammer = () => {
 
   const saveHistory = async (history) => {
     try {
-      await addDoc(collection(db, "examples-generator"), {
+      await addDoc(collection(db, "pair-programmer"), {
         userId: user?.uid,
         history: JSON.stringify(history),
         timestamp: serverTimestamp(),
@@ -198,35 +198,18 @@ export const PairProgrammer = () => {
                   className="prompt_card font-satoshi text-sm"
                 >
                   <div className="flex gap-3 items-center">
-                    {/* <div key={index} className="image_card">
-                      <img
-                        src={`data:image/png;base64,${item.image}`}
-                        alt={item.prompt}
-                        className="w-full h-full object-cover rounded-md"
-                      />
-                    </div> */}
                     <div
                       className="copy_btn"
-                      onClick={() => downloadImage(item.image, item.prompt)}
+                      onClick={() => handleCopy(item.answer)}
                     >
                       <img
-                        src={download}
-                        alt="Download Icon"
+                        src={copied === item.answer ? tick : copy}
+                        alt="Copy Icon"
                         className="w-[50%] h-[50%] object-contain"
                       />
                     </div>
                     <span className="font-semibold">{item.prompt}:</span>{" "}
                     {`${item.answer.substring(0, 50)}...`}
-                  </div>
-                  <div
-                    className="copy_btn"
-                    onClick={() => handleCopy(item.answer)}
-                  >
-                    <img
-                      src={copied === item.answer ? tick : copy}
-                      alt="Copy Icon"
-                      className="w-[50%] h-[50%] object-contain"
-                    />
                   </div>
                 </div>
               ))}
