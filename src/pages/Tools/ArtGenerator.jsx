@@ -92,13 +92,31 @@ export const ArtGenerator = () => {
       const { data } = await getArts({
         prompt: art.prompt,
       });
+      console.log(data);
 
-      const image_url = data?.data[0]?.url;
+      const imageBase64 = data?.data[0]?.b64_json;
+      // const image_url =
+      //   "https://oaidalleapiprodscus.blob.core.windows.net/private/org-KOxdigaEKKZNvxJTjubzwPwe/user-BzI5HwanyLMF7x20dwrurVAg/img-ZH9AgomYVCIlITD92gckuCdn.png?st=2023-12-03T10%3A52%3A19Z&se=2023-12-03T12%3A52%3A19Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-12-02T22%3A39%3A42Z&ske=2023-12-03T22%3A39%3A42Z&sks=b&skv=2021-08-06&sig=MjgRKXEzeVkfNjYS/OrNlIbFb7pCuthCxlCRNpDTuBk%3D";
 
-      if (image_url) {
+      // const convertImageToBlob = async (imageUrl) => {
+      // let blobUrl;
+      // try {
+      //   const response = await fetch(image_url);
+      //   const imageData = await response.blob();
+      //   blobUrl = URL.createObjectURL(imageData);
+      //   console.log(blobUrl);
+      // } catch (error) {
+      //   console.error("Error converting image to Blob:", error);
+      // }
+
+      // const imageBase64 = await blobToBase64(blobUrl);
+      console.log(imageBase64);
+      // };
+
+      if (imageBase64) {
         const newArt = {
           ...art,
-          image: image_url,
+          image: imageBase64,
         };
         const updatedAllArts = [newArt, ...allArts];
 
@@ -121,12 +139,22 @@ export const ArtGenerator = () => {
     setTimeout(() => setCopied(""), 3000);
   };
 
+  const blobToBase64 = (blob) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        resolve(reader.result.split(",")[1]);
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+  };
+
   const downloadImage = async (image, prompt) => {
     try {
       const link = document.createElement("a");
-      link.href = image;
-      link.setAttribute("download", `${prompt}.png`);
-      document.body.appendChild(link);
+      link.href = `data:image/png;base64,${image}`;
+      link.download = prompt;
       link.click();
       toast.success("Image downloaded successfully!");
     } catch (error) {
@@ -185,7 +213,7 @@ export const ArtGenerator = () => {
                   <div className="flex gap-3 items-center">
                     <div key={index} className="image_card">
                       <img
-                        src={item.image}
+                        src={`data:image/png;base64,${item.image}`}
                         alt={item.prompt}
                         className="w-full h-full object-cover rounded-md"
                       />
@@ -244,7 +272,11 @@ export const ArtGenerator = () => {
                 ) : (
                   <div>
                     <img
-                      src={art.image ? art.image : defaultImage}
+                      src={
+                        art.image
+                          ? `data:image/png;base64,${art.image}`
+                          : defaultImage
+                      }
                       alt={art.prompt}
                       className={`${
                         art.image ? "mt-[24px]" : ""
