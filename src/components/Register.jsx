@@ -8,7 +8,8 @@ import {
 } from "firebase/auth";
 import { auth, db } from "../../firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore/lite";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { logo } from "../assets";
 
 export const Register = ({ role }) => {
   const navigate = useNavigate();
@@ -50,16 +51,47 @@ export const Register = ({ role }) => {
     }
   };
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>{errors?.email?.toString()}</div>
-      <input
-        type="email"
-        placeholder="you@example.com"
-        {...register("email")}
-      />
-      <div>{errors?.password?.toString()}</div>
-      <input type="password" placeholder="Password" {...register("password")} />
-      <button>Submit</button>
-    </form>
+    <div className="grid grid-cols-1 container mx-auto py-7 min-h-screen place-items-center px-6">
+      <form
+        className="flex flex-col gap-10 max-w-full w-[28rem] text-center"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <p className="flex justify-center">
+          <Link href="/">
+            <img src={logo} className="h-20 w-20" alt="Logo" />
+          </Link>
+        </p>
+        <div className="flex flex-col gap-1.5">
+          <h2 className="text-lg text-gray-600">Create your account</h2>
+          <h6 className="text-base text-[var(--primary)]">
+            <Link to={`/${role}/signin`}>
+              Already have an account? Signin.
+            </Link>
+          </h6>
+        </div>
+        <div className="flex flex-col gap-3">
+          <input
+            id="email-address"
+            name="email"
+            type="email"
+            autoComplete="email"
+            required
+            className="input"
+            placeholder="you@example.com"
+            {...register("email")}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            {...register("password")}
+            id="password"
+            name="password"
+            required
+            className="input"
+          />
+        </div>
+        <button className="btn-default w-full">Sign up</button>
+      </form>
+    </div>
   );
 };
