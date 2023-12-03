@@ -26,6 +26,7 @@ import "./StudentTools.css";
 import { MainLayout } from "../../layouts";
 import { Header } from "../../components";
 import { SideCol } from "../../components/SideCol";
+import { generateImageFiles, generateImagesLinks } from "../../services";
 
 const huggingFaceToken = import.meta.env.VITE_HUGGING_FACE_TOKEN;
 
@@ -117,6 +118,10 @@ export const ArtGenerator = () => {
     setImageLoading(true);
     try {
       const response = await generateImage({ inputs: art.prompt });
+      const imageFiles = await generateImageFiles(art.prompt);
+      console.log('Before');
+      console.log(imageFiles);
+      console.log('After');
       const imageBase64 = await blobToBase64(response);
 
       if (response) {
