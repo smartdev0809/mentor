@@ -1,5 +1,8 @@
-import React from "react";
-import { Reveal, Tool, Header } from "../../components";
+import React, { useState, useEffect } from "react";
+import { Tool, Header } from "../../components";
+import { useNavigate } from "react-router-dom";
+import { auth, db } from "../../../firebase";
+import { onAuthStateChanged } from "firebase/auth";
 import {
   facts,
   art,
@@ -104,6 +107,17 @@ const tools = [
 ];
 
 export const StudentDashboard = () => {
+  const navigate = useNavigate();
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user_) => {
+      setUser(user_);
+      !user_ && navigate("/student/signin");
+    });
+  }, [user]);
+
   return (
     <MainLayout>
       <section

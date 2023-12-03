@@ -36,7 +36,7 @@ export const ExamplesAnalogiesGenerator = () => {
   useEffect(() => {
     onAuthStateChanged(auth, (user_) => {
       setUser(user_);
-      !user_ && navigate("/student/signin");
+      !user_ && navigate("/teacher/signin");
     });
   }, [user]);
 
