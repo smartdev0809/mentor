@@ -43,7 +43,7 @@ const plans = [
     price: "$999.99",
     features: [
       "Unlimited credits",
-      "Full access to all AI-STEAM tools and resources",
+      "Full access to all AI-STEAM resources",
       "Unlimited storage and usage",
       "Exclusive premium content and support",
     ],
