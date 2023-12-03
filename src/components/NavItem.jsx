@@ -50,7 +50,7 @@ export const NavItem = ({ isAnyOpen, category, handleOpen, close, isOpen }) => {
                       </div>
 
                       <Link
-                        href={item.href}
+                        to={item.href}
                         className="mt-6 block font-medium text-gray-900"
                       >
                         {item.name}

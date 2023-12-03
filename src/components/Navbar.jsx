@@ -1,11 +1,29 @@
 import { NavItems } from "./NavItems";
 import { logo } from "../assets";
-import { UserAccountNav } from "./UserAccountNav";
 import { MobileNav } from "./MobileNav";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { auth } from "../../firebase";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 
 export const Navbar = () => {
-  const user = null;
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user_) => {
+      setUser(user_);
+    });
+  }, [user]);
+
+  const logoutHandler = async () => {
+    try {
+      await signOut(auth);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="bg-gray-50/80 sticky z-50 top-0 inset-x-0 h-16">
@@ -35,16 +53,14 @@ export const Navbar = () => {
                   )}
 
                   {user ? (
-                    <UserAccountNav user={user} />
+                    <button className="btn-ghost" onClick={logoutHandler}>
+                      Sign out
+                    </button>
                   ) : (
                     <Link to="/roles" className="btn-ghost">
                       Create account
                     </Link>
                   )}
-
-                  {user ? (
-                    <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
-                  ) : null}
 
                   {user ? null : (
                     <div className="flex lg:ml-6">
