@@ -1,49 +1,57 @@
-import { facts } from "../assets";
+import {
+  facts,
+  art,
+  articles,
+  writing,
+  plan,
+  examples,
+  quiz
+} from "../assets";
 export const PRODUCT_CATEGORIES = [
     {
-      label: 'UI Kits',
-      value: 'ui_kits',
+      label: 'Student Tools',
+      value: 'student_tools',
       featured: [
         {
-          name: 'Editor picks',
-          href: `/products?category=ui_kits`,
+          name: "Interesting Facts Generator",
+          href: "/tool/fact-generator",
           imageSrc: facts,
         },
         {
-          name: 'New Arrivals',
-          href: '/products?category=ui_kits&sort=desc',
-          imageSrc: facts,
+          name: "Art Generator",
+          href: "/tool/art-generator",
+          imageSrc: art,
         },
         {
-          name: 'Bestsellers',
-          href: '/products?category=ui_kits',
-          imageSrc: facts,
+          name: "Creative Writing Reviewer",
+          href: "/tool/creative-writing-reviewer",
+          imageSrc: writing,
+        },
+        {
+          name: "Article Summarizer",
+          href: "/tool/article-summarizer",
+          imageSrc: articles,
         },
       ],
     },
     {
-      label: 'Icons',
-      value: 'icons',
+      label: 'Teacher Tools',
+      value: 'teacher_tools',
       featured: [
         {
-          name: 'Favorite Icon Picks',
-          href: `/products?category=icons`,
-          imageSrc: facts,
+          name: "Lesson Plan Generator",
+          href: "/tool/lesson-plan-generator",
+          imageSrc: plan,
         },
         {
-          name: 'New Arrivals',
-          href: '/products?category=icons&sort=desc',
-          imageSrc: facts,
+          name: "Examples & Analogies Generator",
+          href: "/tool/examples-generator",
+          imageSrc: examples,
         },
         {
-          name: 'Bestselling Icons',
-          href: '/products?category=icons',
-          imageSrc: facts,
-        },
-        {
-          name: 'Bestselling Icons',
-          href: '/products?category=icons',
-          imageSrc: facts,
+          name: "Quiz Generator",
+          href: "/tool/quiz-generator",
+          imageSrc: quiz,
         },
       ],
     },
