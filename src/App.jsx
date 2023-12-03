@@ -17,6 +17,7 @@ import {
   CreativeWritingReviewer,
   PairProgrammer,
   LessonPlanGenerator,
+  ArticleSummarizer,
   ExamplesAnalogiesGenerator,
   QuizGenerator,
 } from "./pages/Tools";
@@ -49,6 +50,10 @@ function App() {
               <Route
                 path="/tool/lesson-plan-generator"
                 Component={LessonPlanGenerator}
+              />
+              <Route
+                path="/tool/article-summarizer"
+                Component={ArticleSummarizer}
               />
               <Route
                 path="/tool/examples-generator"

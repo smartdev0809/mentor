@@ -3,5 +3,6 @@ export * from "./ArtGenerator.jsx";
 export * from "./CreativeWritingReviewer.jsx";
 export * from "./PairProgrammer.jsx";
 export * from "./LessonPlanGenerator";
+export * from "./ArticleSummarizer";
 export * from "./QuizGenerator";
 export * from "./ExamplesAnalogiesGenerator.jsx";
