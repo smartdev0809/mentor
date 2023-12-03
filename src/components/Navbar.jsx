@@ -25,7 +25,7 @@ export const Navbar = () => {
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
                   {user ? null : (
-                    <Link href="/sign-in" className="btn-ghost">
+                    <Link to="/roles" className="btn-ghost">
                       Sign in
                     </Link>
                   )}
@@ -37,7 +37,7 @@ export const Navbar = () => {
                   {user ? (
                     <UserAccountNav user={user} />
                   ) : (
-                    <Link href="/sign-up" className="btn-ghost">
+                    <Link to="/roles" className="btn-ghost">
                       Create account
                     </Link>
                   )}
