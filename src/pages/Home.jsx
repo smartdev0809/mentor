@@ -98,12 +98,12 @@ export const Home = () => {
                 by our team to ensure our highest quality standards.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mt-6">
-                <Link to="/" className="btn-default">
-                  Browse Trending
+                <Link to="/roles" className="btn-default">
+                  Browse Tools
                 </Link>
-                <button className="btn-ghost">
-                  Our Quality Promise &rarr;
-                </button>
+                <a href="#faqs" className="btn-ghost">
+                  About Us &rarr;
+                </a>
               </div>
             </div>
           </div>

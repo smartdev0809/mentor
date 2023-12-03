@@ -102,7 +102,7 @@ export const MobileNav = () => {
                   onClick={() => closeOnCurrent('/roles')}
                   to='/roles'
                   className='-m-2 block p-2 font-medium text-gray-900'>
-                  Sign in
+                  Sign In
                 </Link>
               </div>
               <div className='flow-root'>

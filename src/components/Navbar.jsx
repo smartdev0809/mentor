@@ -33,7 +33,7 @@ export const Navbar = () => {
             <div className="flex h-16 items-center">
               <MobileNav />
               <div className="ml-4 flex lg:ml-0">
-                <Link href="/">
+                <Link to="/">
                   <img src={logo} className="h-32 w-32" alt="Logo" />
                 </Link>
               </div>
@@ -44,7 +44,7 @@ export const Navbar = () => {
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
                   {user ? null : (
                     <Link to="/roles" className="btn-ghost">
-                      Sign in
+                      Sign In
                     </Link>
                   )}
 
@@ -54,11 +54,11 @@ export const Navbar = () => {
 
                   {user ? (
                     <button className="btn-ghost" onClick={logoutHandler}>
-                      Sign out
+                      Sign Out
                     </button>
                   ) : (
                     <Link to="/roles" className="btn-ghost">
-                      Create account
+                      Create Account
                     </Link>
                   )}
 

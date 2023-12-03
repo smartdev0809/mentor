@@ -71,7 +71,7 @@ export const TeacherDashboard = () => {
         className="py-20 sm:py-32 max-w-full"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <Header title="Teacher" title_="Dashboard" subtitle="Tools" />
+          <Header title="Teacher" title_="Dashboard" subtitle="Streamlining teaching workflows and fostering effective studying through AI-driven tools such as quiz, examples, and lesson plans generator for teachers." />
           <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 items-start gap-x-8 gap-y-10 sm:mt-20 lg:max-w-none lg:grid-cols-3">
             {tools?.map((tool, index) => (
               <Tool key={index} tool={tool} />
