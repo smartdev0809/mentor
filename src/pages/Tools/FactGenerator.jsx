@@ -172,7 +172,7 @@ export const FactGenerator = () => {
     <div className="flex gap-6">
       <SideCol side={"left"} />
       <MainLayout>
-        <section id="visualizer" className="max-w-[720px] w-full mx-auto px-6">
+        <section >
           <Header
             title="Interesting Facts"
             title_="Generator"

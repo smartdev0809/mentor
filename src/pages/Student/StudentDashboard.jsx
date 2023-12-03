@@ -92,7 +92,7 @@ const tools = [
     name: "Article Summarizer",
     detail:
       "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
-    link: "/tool/fact-generator",
+    link: "/tool/article-summarizer",
     image: articles,
   },
   {

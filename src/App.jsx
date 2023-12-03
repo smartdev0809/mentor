@@ -16,6 +16,7 @@ import {
   ArtGenerator,
   ExamplesAnalogiesGenerator,
   LessonPlanGenerator,
+  ArticleSummarizer,
 } from "./pages/Tools";
 
 function App() {
@@ -38,6 +39,10 @@ function App() {
               <Route path="/verify-email" Component={VerifyEmail} />
               <Route path="/tool/fact-generator" Component={FactGenerator} />
               <Route path="/tool/art-generator" Component={ArtGenerator} />
+              <Route
+                path="/tool/article-summarizer"
+                Component={ArticleSummarizer}
+              />
               <Route
                 path="/tool/examples-generator"
                 Component={ExamplesAnalogiesGenerator}
