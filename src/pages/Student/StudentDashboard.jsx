@@ -126,7 +126,7 @@ export const StudentDashboard = () => {
         className="py-20 sm:py-32 max-w-full"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <Header title="Student" title_="Dashboard" subtitle="Tools" />
+          <Header title="Student" title_="Dashboard" subtitle="Equipping students with facts creation, writing reviewer, summarization, image generation, and other AI-enhanced learning utilities." />
           <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 items-start gap-x-8 gap-y-10 sm:mt-20 lg:max-w-none lg:grid-cols-3">
             {tools?.map((tool, index) => (
               <Tool key={index} tool={tool} />
