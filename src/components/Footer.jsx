@@ -1,8 +1,9 @@
 import React from "react";
 import { Reveal } from "./Reveal";
 import { Link } from "react-router-dom";
+import { logo } from "../assets";
 
-export const Footer = ({ logo }) => {
+export const Footer = () => {
   return (
     <Reveal direction="bottom">
       <footer className="bg-transparent flex-grow-0 border-t border-gray-200">
@@ -16,7 +17,7 @@ export const Footer = ({ logo }) => {
 
             <div className="mt-4 md:mb-4 ">
               <div className="flex justify-center">
-                <img src={logo} className="h-12 w-12" />
+                <img src={logo} className="h-20 w-36" />
               </div>
             </div>
 

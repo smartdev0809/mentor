@@ -16,7 +16,7 @@ export const Navbar = () => {
               <MobileNav />
               <div className="ml-4 flex lg:ml-0">
                 <Link href="/">
-                  <img src={logo} className="h-10 w-10" alt="Logo" />
+                  <img src={logo} className="h-32 w-32" alt="Logo" />
                 </Link>
               </div>
               <div className="hidden z-50 lg:ml-8 lg:block lg:self-stretch">
