@@ -119,7 +119,7 @@ export const QuizGenerator = () => {
           <Header
             title="Quiz"
             title_="Generator"
-            subtitle="Welcome to DigitalHippo. Every asset on our platform is verified by our team to ensure our highest quality standards."
+            subtitle="Quiz Generator helps educators to create customized quizzes fostering interactive learning experiences. Specify your audience and topic to generate engaging quizzes."
             tool={true}
           />
           <div className="flex flex-col w-full gap-2">

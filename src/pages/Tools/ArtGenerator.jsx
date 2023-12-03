@@ -131,7 +131,7 @@ export const ArtGenerator = () => {
           <Header
             title="Art"
             title_="Generator"
-            subtitle="Welcome to DigitalHippo. Every asset on our platform is verified by our team to ensure our highest quality standards."
+            subtitle="Unleash your artistic spirit effortlessly with our Art Generator. Enter a theme or keyword, and witness a curated showcase of captivating artworks. This tool is your gateway to inspiration, fostering creativity and providing a delightful exploration of the diverse world of art."
             tool={true}
           />
           <div className="flex flex-col w-full gap-2">

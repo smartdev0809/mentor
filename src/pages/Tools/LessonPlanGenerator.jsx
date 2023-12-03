@@ -125,7 +125,7 @@ export const LessonPlanGenerator = () => {
           <Header
             title="Lesson Plan"
             title_="Generator"
-            subtitle="Welcome to DigitalHippo. Every asset on our platform is verified by our team to ensure our highest quality standards."
+            subtitle="Lesson Plan Generator simplifies lesson planning for educators, creating customizable plans and structured frameworks for comprehensive curriculum design."
             tool={true}
           />
           <div className="flex flex-col w-full gap-2">

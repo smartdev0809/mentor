@@ -123,7 +123,7 @@ export const ExamplesAnalogiesGenerator = () => {
           <Header
             title="Examples & Analogies"
             title_="Generator"
-            subtitle="Welcome to DigitalHippo. Every asset on our platform is verified by our team to ensure our highest quality standards."
+            subtitle="Enter a concept or topic, and watch as we provide illuminating examples and vivid analogies to help enhance your students' understanding and inspire innovative thinking."
             tool={true}
           />
           <div className="flex flex-col w-full gap-2">

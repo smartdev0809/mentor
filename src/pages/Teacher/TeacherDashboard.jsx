@@ -10,43 +10,43 @@ const tools = [
   {
     name: "Lesson Plan Generator",
     detail:
-      "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
+      "Create customizable plans and simplify lesson planning for your classes using our Lesson Plan Generator!",
     link: "/tool/lesson-plan-generator",
     image: plan,
   },
   {
-    name: "Presentation Creator",
-    detail:
-      "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
-    link: "/tool/fact-generator",
-    image: ppt,
-  },
-  {
-    name: "Examples & Analogies Generator",
-    detail:
-      "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
-    link: "/tool/examples-generator",
-    image: examples,
-  },
-  {
     name: "Quiz Generator",
     detail:
-      "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
+      "Tell us about your audience and topic to generate engaging questions and quizzes for students.",
     link: "/tool/quiz-generator",
     image: quiz,
   },
   {
+    name: "Examples & Analogies Generator",
+    detail:
+      "Enter a concept or topic, and watch as we provide illuminating examples and vivid analogies!",
+    link: "/tool/examples-generator",
+    image: examples,
+  },
+  {
+    name: "Presentation Creator",
+    detail:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel ante arcu. Morbi aliquet vel nibh vel convallis.",
+    link: "",
+    image: ppt,
+  },
+  {
     name: "Worksheets Generator",
     detail:
-      "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
-    link: "/tool/fact-generator",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel ante arcu. Morbi aliquet vel nibh vel convallis.",
+    link: "",
     image: worksheet,
   },
   {
     name: "Lecture Prep Partner",
     detail:
-      "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
-    link: "/tool/fact-generator",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel ante arcu. Morbi aliquet vel nibh vel convallis.",
+    link: "",
     image: prep,
   },
 ];

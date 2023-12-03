@@ -146,11 +146,11 @@ export const FactGenerator = () => {
     <div className="flex gap-6">
       <SideCol side={"left"} />
       <MainLayout>
-        <section >
+        <section id="visualizer" className="max-w-[720px] w-full mx-auto px-6">
           <Header
             title="Interesting Facts"
             title_="Generator"
-            subtitle="Welcome to DigitalHippo. Every asset on our platform is verified by our team to ensure our highest quality standards."
+            subtitle="Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image to expand your knowledge and entertain your imagination!"
             tool={true}
           />
           <div className="flex flex-col w-full gap-2">

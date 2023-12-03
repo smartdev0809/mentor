@@ -124,7 +124,7 @@ export const CreativeWritingReviewer = () => {
           <Header
             title="Creative Writing"
             title_="Reviewer"
-            subtitle="Welcome to DigitalHippo. Every asset on our platform is verified by our team to ensure our highest quality standards."
+            subtitle="Refine your writing with our feedback tool! Input your essay or text, and receive constructive feedback to enhance clarity, coherence, and overall impact."
             tool={true}
           />
           <div className="flex flex-col w-full gap-2">
@@ -221,7 +221,7 @@ export const CreativeWritingReviewer = () => {
             <div className="flex flex-col gap-3 w-full">
               <h2 className="font-satoshi font-bold text-gray-600 text-xl">
                 {allResults.length == 0 || !result.answer
-                  ? "Let's craft your very first masterpiece!"
+                  ? "Let's review your very first work!"
                   : "Generating constructive feedback for your work!"}
                 <span className="blue_gradient"></span>
               </h2>

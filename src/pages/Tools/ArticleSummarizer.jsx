@@ -102,7 +102,7 @@ export const ArticleSummarizer = () => {
           <Header
             title="Article"
             title_="Summarizer"
-            subtitle="Welcome to DigitalHippo. Every asset on our platform is verified by our team to ensure our highest quality standards."
+            subtitle="Simplify your reading with Article Summarizer, a tool that transforms lengthy articles into clear and concise summaries."
             tool={true}
           />
           <div className="flex flex-col w-full gap-2">

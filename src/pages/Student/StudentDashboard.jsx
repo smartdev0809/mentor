@@ -30,78 +30,78 @@ const tools = [
   {
     name: "Art Generator",
     detail:
-      "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
+      "Explore art effortlessly! Input a theme, discover captivating artworks, and indulge your creativity with our Art Generator.",
     link: "/tool/art-generator",
     image: art,
   },
   {
+    name: "Article Summarizer",
+    detail:
+      "Enter an article URL and transform lengthy articles into clear and concise summaries using our AI based summarizer.",
+    link: "/tool/article-summarizer",
+    image: articles,
+  },
+  {
+    name: "Creative Writing Reviewer",
+    detail:
+      "Input your essay or text, and receive constructive feedback to enhance clarity, coherence, and overall impact.",
+    link: "/tool/creative-writing-reviewer",
+    image: writing,
+  },
+  {
     name: "Puzzles Generator",
     detail:
-      "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
-    link: "/tool/fact-generator",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel ante arcu. Morbi aliquet vel nibh vel convallis.",
+    link: "",
     image: puzzle,
   },
   {
     name: "Debate Partner",
     detail:
-      "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
-    link: "/tool/fact-generator",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel ante arcu. Morbi aliquet vel nibh vel convallis.",
+    link: "",
     image: debate,
-  },
-  {
-    name: "Creative Writing Reviewer",
-    detail:
-      "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
-    link: "/tool/creative-writing-reviewer",
-    image: writing,
   },
   {
     name: "Pair Programmer",
     detail:
-      "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
-    link: "/tool/pair-programmer",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel ante arcu. Morbi aliquet vel nibh vel convallis.",
+    link: "",
     image: programmer,
   },
   {
     name: "Design Thinking Partner",
     detail:
-      "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
-    link: "/tool/fact-generator",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel ante arcu. Morbi aliquet vel nibh vel convallis.",
+    link: "",
     image: thinking,
   },
   {
-    name: "Latest News",
+    name: "News Feed",
     detail:
-      "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
-    link: "/tool/fact-generator",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel ante arcu. Morbi aliquet vel nibh vel convallis.",
+    link: "",
     image: news,
   },
   {
-    name: "Historical Data",
+    name: "Time Traveler",
     detail:
-      "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
-    link: "/tool/fact-generator",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel ante arcu. Morbi aliquet vel nibh vel convallis.",
+    link: "",
     image: history,
-  },
-  {
-    name: "Article Summarizer",
-    detail:
-      "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
-    link: "/tool/article-summarizer",
-    image: articles,
   },
   {
     name: "YouTube Video Summarizer",
     detail:
-      "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
-    link: "/tool/fact-generator",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel ante arcu. Morbi aliquet vel nibh vel convallis.",
+    link: "",
     image: video,
   },
   {
     name: "Citation Generator",
     detail:
-      "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
-    link: "/tool/fact-generator",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel ante arcu. Morbi aliquet vel nibh vel convallis.",
+    link: "",
     image: citation,
   },
 ];
