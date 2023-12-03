@@ -11,3 +11,5 @@ export * from "./NavItem";
 export * from "./MobileNav";
 export * from "./UserAccountNav";
 export * from "./Header";
+export * from "./SideCol";
+export * from "./SideCol2";

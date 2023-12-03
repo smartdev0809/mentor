@@ -14,6 +14,7 @@ import { Toaster } from "react-hot-toast";
 import {
   FactGenerator,
   ArtGenerator,
+  ExamplesAnalogiesGenerator,
   LessonPlanGenerator,
 } from "./pages/Tools";
 
@@ -37,6 +38,10 @@ function App() {
               <Route path="/verify-email" Component={VerifyEmail} />
               <Route path="/tool/fact-generator" Component={FactGenerator} />
               <Route path="/tool/art-generator" Component={ArtGenerator} />
+              <Route
+                path="/tool/examples-generator"
+                Component={ExamplesAnalogiesGenerator}
+              />
               <Route
                 path="/tool/lesson-plan-generator"
                 Component={LessonPlanGenerator}

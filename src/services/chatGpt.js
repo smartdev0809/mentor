@@ -2,8 +2,8 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const openAiKey = import.meta.env.VITE_OPEN_AI_API_KEY;
 
-export const lessonPlanApi = createApi({
-  reducerPath: "lessonPlanApi",
+export const chatGptApi = createApi({
+  reducerPath: "chatGptApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://api.openai.com/v1/chat/completions",
     prepareHeaders: (headers) => {
@@ -13,7 +13,7 @@ export const lessonPlanApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    getPlan: builder.mutation({
+    getAnswer: builder.mutation({
       query: (data) => ({
         method: "POST",
         body: {
@@ -25,4 +25,4 @@ export const lessonPlanApi = createApi({
   }),
 });
 
-export const { useGetLessonPlanMutation } = lessonPlanApi;
+export const { useGetAnswerMutation } = chatGptApi;

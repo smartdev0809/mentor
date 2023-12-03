@@ -1,14 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { factsApi } from "./facts";
-import { lessonPlanApi } from "./lesson-plan";
+import { chatGptApi } from "./chatGpt";
 
 export const store = configureStore({
   reducer: {
-    [factsApi.reducerPath]: factsApi.reducer,
-    [lessonPlanApi.reducerPath]: lessonPlanApi.reducer,
+    [chatGptApi.reducerPath]: chatGptApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware()
-      .concat(factsApi.middleware)
-      .concat(lessonPlanApi.middleware),
+    getDefaultMiddleware().concat(chatGptApi.middleware),
 });

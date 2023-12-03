@@ -7,7 +7,7 @@ import {
   download,
   search,
 } from "../../assets";
-import { useGetFactsMutation } from "../../services";
+import { useGetAnswerMutation } from "../../services";
 import toast from "react-hot-toast";
 import { auth, db } from "../../../firebase";
 import { onAuthStateChanged } from "firebase/auth";
@@ -31,7 +31,7 @@ export const LessonPlanGenerator = () => {
   });
   const [allPlans, setAllPlans] = useState([]);
   const [copied, setCopied] = useState("");
-  const [getPlan, { error, isLoading }] = useGetFactsMutation();
+  const [getPlan, { error, isLoading }] = useGetAnswerMutation();
 
   const [user, setUser] = useState(null);
 

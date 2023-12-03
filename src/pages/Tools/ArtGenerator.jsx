@@ -24,8 +24,7 @@ import {
 } from "firebase/firestore/lite";
 import "./StudentTools.css";
 import { MainLayout } from "../../layouts";
-import { Header } from "../../components";
-import { SideCol } from "../../components/SideCol";
+import { Header, SideCol } from "../../components";
 
 const huggingFaceToken = import.meta.env.VITE_HUGGING_FACE_TOKEN;
 

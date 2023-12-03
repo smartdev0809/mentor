@@ -21,7 +21,7 @@ import {
   s19,
 } from "../assets";
 
-export const SideCol = ({ side }) => {
+export const SideCol2 = ({ side }) => {
   const images = {
     left: [s1, s2, s3, s4, s5, s6, s7, s8, s9, s11, s10, s12],
     right: [s11, s12, s13, s14, s15, s16, s17, s18, s19, s2, s1],
