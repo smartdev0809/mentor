@@ -24,9 +24,13 @@ import video from "./video.jpeg";
 import thinking from "./thinking.jpeg";
 import prep from "./prep.jpeg";
 import worksheet from "./worksheet.jpeg";
+import student from "./student.jpeg";
+import teacher from "./teacher.jpeg";
 import factsBg from "./facts-bg.jpeg";
 
 export {
+  teacher,
+  student,
   logo,
   loader,
   copy,

@@ -110,6 +110,10 @@ body {
   @apply z-10 block;
 }
 
+.input {
+  @apply block w-full rounded-md border border-gray-200 bg-white py-2.5 pl-2.5 pr-12 text-sm shadow-lg font-satoshi font-medium focus:border-black focus:outline-none focus:ring-0;
+}
+
 .max-w-wrapper {
   @apply mx-auto w-full max-w-screen-xl px-2.5 md:px-20;
 }

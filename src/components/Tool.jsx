@@ -6,7 +6,7 @@ export const Tool = ({ tool }) => {
   return (
     <Reveal direction="bottom">
       <Link to={tool.link}>
-        <section className="flex flex-col overflow-hidden rounded-3xl p-6 shadow-lg shadow-gray-900/5 bg-white cursor-pointer">
+        <section className="flex flex-col overflow-hidden rounded-xl p-6 shadow-lg shadow-gray-900/5 bg-white cursor-pointer">
           <img
             src={tool.image}
             alt={tool.name}

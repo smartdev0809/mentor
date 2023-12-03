@@ -7,7 +7,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth, db } from "../../firebase";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import {
   collection,
   getDocs,
@@ -15,6 +15,7 @@ import {
   query,
   where,
 } from "firebase/firestore/lite";
+import { logo } from "../assets";
 
 export const Login = ({ role }) => {
   const navigate = useNavigate();
@@ -64,27 +65,23 @@ export const Login = ({ role }) => {
     }
   };
   return (
-    // <form onSubmit={handleSubmit(onSubmit)}>
     //   <div>{errors?.email?.toString()}</div>
-    //   <input
-    //     type="email"
-    //     placeholder="you@example.com"
-    //     {...register("email")}
-    //   />
-    //   <div>{errors?.password?.toString()}</div>
-    //   <input type="password" placeholder="Password" {...register("password")} />
-    //   <button>Submit</button>
-    // </form>
     <div className="grid grid-cols-1 container mx-auto py-7 min-h-screen place-items-center px-6">
       <form
         className="flex flex-col gap-10 max-w-full w-[28rem] text-center"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <p className="b1 text-center medium-purple">XYZ</p>
+        <p className="flex justify-center">
+          <Link href="/">
+            <img src={logo} className="h-20 w-20" alt="Logo" />
+          </Link>
+        </p>
         <div className="flex flex-col gap-1.5">
-          <h2 className="h2">Sign in to your account</h2>
-          <h6 className="h6 medium-purple">
-            Return to your dashboard and have fun blogging
+          <h2 className="text-lg text-gray-600">Sign in to your account</h2>
+          <h6 className="text-base text-[var(--primary)]">
+            <Link to={`/${role}/signup`}>
+              Do not have an account. Register.
+            </Link>
           </h6>
         </div>
         <div className="flex flex-col gap-3">
@@ -108,7 +105,7 @@ export const Login = ({ role }) => {
             className="input"
           />
         </div>
-        <button className="btn-filled white w-full">Sign in</button>
+        <button className="btn-default w-full">Sign in</button>
       </form>
     </div>
   );
