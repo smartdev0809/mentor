@@ -17,9 +17,9 @@ import {
 } from "firebase/firestore/lite";
 import "./StudentTools.css";
 import { MainLayout } from "../../layouts";
-import { Header, SideCol2 } from "../../components";
+import { Header, SideCol } from "../../components";
 
-export const LessonPlanGenerator = () => {
+export const CreativeWritingReviewer = () => {
   const navigate = useNavigate();
   const [result, setResult] = useState({
     prompt: "",
@@ -117,12 +117,12 @@ export const LessonPlanGenerator = () => {
 
   return (
     <div className="flex gap-6">
-      <SideCol2 side={"left"} />
+      <SideCol side={"left"} />
       <MainLayout>
         <section id="visualizer" className="max-w-[720px] w-full mx-auto px-6">
           <Header
-            title="Lesson Plan"
-            title_="Generator"
+            title="Creative Writing"
+            title_="Reviewer"
             subtitle="Welcome to DigitalHippo. Every asset on our platform is verified by our team to ensure our highest quality standards."
             tool={true}
           />
@@ -266,7 +266,7 @@ export const LessonPlanGenerator = () => {
           </div>
         </section>
       </MainLayout>
-      <SideCol2 side={"right"} />
+      <SideCol side={"right"} />
     </div>
   );
 };

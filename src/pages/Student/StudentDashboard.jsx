@@ -7,7 +7,6 @@ import {
   programmer,
   history,
   articles,
-  examples,
   debate,
   writing,
   citation,
@@ -24,13 +23,6 @@ const tools = [
       "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
     link: "/tool/fact-generator",
     image: facts,
-  },
-  {
-    name: "Examples & Analogies Generator",
-    detail:
-      "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
-    link: "/tool/examples-generator",
-    image: examples,
   },
   {
     name: "Art Generator",
@@ -57,14 +49,14 @@ const tools = [
     name: "Creative Writing Reviewer",
     detail:
       "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
-    link: "/tool/fact-generator",
+    link: "/tool/creative-writing-reviewer",
     image: writing,
   },
   {
     name: "Pair Programmer",
     detail:
       "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
-    link: "/tool/fact-generator",
+    link: "/tool/pair-programmer",
     image: programmer,
   },
   {

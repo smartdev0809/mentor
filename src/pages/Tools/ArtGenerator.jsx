@@ -190,7 +190,11 @@ export const ArtGenerator = () => {
                       />
                     </div>
                     <span className="font-semibold">Prompt:</span>{" "}
-                    {`${item.prompt.substring(0, 50)}...`}
+                    {`${
+                      item.prompt.length < 50
+                        ? item.prompt + "."
+                        : item.prompt.substring(0, 50) + "..."
+                    }`}
                   </div>
                   <div
                     className="copy_btn"

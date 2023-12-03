@@ -19,7 +19,7 @@ import "./StudentTools.css";
 import { MainLayout } from "../../layouts";
 import { Header, SideCol2 } from "../../components";
 
-export const LessonPlanGenerator = () => {
+export const QuizGenerator = () => {
   const navigate = useNavigate();
   const [result, setResult] = useState({
     prompt: "",
@@ -121,7 +121,7 @@ export const LessonPlanGenerator = () => {
       <MainLayout>
         <section id="visualizer" className="max-w-[720px] w-full mx-auto px-6">
           <Header
-            title="Lesson Plan"
+            title="Quiz"
             title_="Generator"
             subtitle="Welcome to DigitalHippo. Every asset on our platform is verified by our team to ensure our highest quality standards."
             tool={true}
