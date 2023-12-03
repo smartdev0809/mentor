@@ -9,11 +9,12 @@ const pricingSubheading =
   "Flexible pricing options for every user. Select the tier that best matches your needs and embark on an AI-STEAM learning experience tailored to you.";
 const plans = [
   {
-    name: "Tier 1: Basic Access",
+    name: "Tier 1: Basic Access (Monthly)",
     detail:
       "Suitable for individuals exploring the platform. Basic functionalities for casual users.",
     price: "$0",
     features: [
+      "50 credits",
       "Access to fundamental AI tools for students and educators",
       "Limited storage and usage capacity",
       "Basic content library",
@@ -22,11 +23,12 @@ const plans = [
     image: <img src={pricinglogo} width={28} height={28} alt="Starter Plan" />,
   },
   {
-    name: "Tier 2: Standard Access",
+    name: "Tier 2: Standard Access (Monthly)",
     detail:
       "Suitable for students and educators seeking broader AI applications. Enhanced functionalities for regular users.",
-    price: "$4.99",
+    price: "$49.99",
     features: [
+      "1000 credits",
       "Expanded range of AI-powered tools",
       "Increased storage capacity",
       "Advanced content library",
@@ -35,11 +37,12 @@ const plans = [
     image: <img src={pricinglogo} width={28} height={28} alt="Weekly Plan" />,
   },
   {
-    name: "Tier 3: Premium Access",
+    name: "Tier 3: Premium Access (Yearly)",
     detail:
       "Suitable for serious learners, educational institutions, and professionals. Comprehensive access for advanced users and organizations.",
-    price: "$19.99",
+    price: "$999.99",
     features: [
+      "Unlimited credits",
       "Full access to all AI-STEAM tools and resources",
       "Unlimited storage and usage",
       "Exclusive premium content and support",
