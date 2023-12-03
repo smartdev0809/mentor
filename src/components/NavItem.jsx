@@ -56,7 +56,7 @@ export const NavItem = ({ isAnyOpen, category, handleOpen, close, isOpen }) => {
                         {item.name}
                       </Link>
                       <p className="mt-1" aria-hidden="true">
-                        Shop now
+                        Try now
                       </p>
                     </div>
                   ))}
