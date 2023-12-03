@@ -64,16 +64,52 @@ export const Login = ({ role }) => {
     }
   };
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>{errors?.email?.toString()}</div>
-      <input
-        type="email"
-        placeholder="you@example.com"
-        {...register("email")}
-      />
-      <div>{errors?.password?.toString()}</div>
-      <input type="password" placeholder="Password" {...register("password")} />
-      <button>Submit</button>
-    </form>
+    // <form onSubmit={handleSubmit(onSubmit)}>
+    //   <div>{errors?.email?.toString()}</div>
+    //   <input
+    //     type="email"
+    //     placeholder="you@example.com"
+    //     {...register("email")}
+    //   />
+    //   <div>{errors?.password?.toString()}</div>
+    //   <input type="password" placeholder="Password" {...register("password")} />
+    //   <button>Submit</button>
+    // </form>
+    <div className="grid grid-cols-1 container mx-auto py-7 min-h-screen place-items-center px-6">
+      <form
+        className="flex flex-col gap-10 max-w-full w-[28rem] text-center"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <p className="b1 text-center medium-purple">XYZ</p>
+        <div className="flex flex-col gap-1.5">
+          <h2 className="h2">Sign in to your account</h2>
+          <h6 className="h6 medium-purple">
+            Return to your dashboard and have fun blogging
+          </h6>
+        </div>
+        <div className="flex flex-col gap-3">
+          <input
+            id="email-address"
+            name="email"
+            type="email"
+            autoComplete="email"
+            required
+            className="input"
+            placeholder="you@example.com"
+            {...register("email")}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            {...register("password")}
+            id="password"
+            name="password"
+            required
+            className="input"
+          />
+        </div>
+        <button className="btn-filled white w-full">Sign in</button>
+      </form>
+    </div>
   );
 };
