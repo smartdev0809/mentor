@@ -80,7 +80,7 @@ export const Login = ({ role }) => {
           <h2 className="text-lg text-gray-600">Sign in to your account</h2>
           <h6 className="text-base text-[var(--primary)]">
             <Link to={`/${role}/signup`}>
-              Do not have an account. Register.
+              Do not have an account? Register.
             </Link>
           </h6>
         </div>

@@ -8,7 +8,6 @@ import {
   download,
   search,
 } from "../../assets";
-import { useGetFactsMutation } from "../../services";
 import toast from "react-hot-toast";
 import { auth, db } from "../../../firebase";
 import { onAuthStateChanged } from "firebase/auth";
@@ -30,16 +29,14 @@ import { SideCol } from "../../components/SideCol";
 
 const huggingFaceToken = import.meta.env.VITE_HUGGING_FACE_TOKEN;
 
-export const FactGenerator = () => {
+export const ArtGenerator = () => {
   const navigate = useNavigate();
-  const [fact, setFact] = useState({
+  const [art, setArt] = useState({
     prompt: "",
-    facts: [],
     image: null,
   });
-  const [allFacts, setAllFacts] = useState([]);
+  const [allArts, setAllArts] = useState([]);
   const [copied, setCopied] = useState("");
-  const [getFacts, { error, isLoading }] = useGetFactsMutation();
   const [imageLoading, setImageLoading] = useState(false);
   const [imageError, setImageError] = useState(null);
 
@@ -56,19 +53,19 @@ export const FactGenerator = () => {
     async function fetchData() {
       const querySnapshot = await getDocs(
         query(
-          collection(db, "facts-generator"),
+          collection(db, "art-generator"),
           where("userId", "==", user?.uid),
           orderBy("timestamp", "desc"),
           limit(50)
         )
       );
-      const factsFromStorage = querySnapshot?.docs?.map((doc) => {
+      const artsFromStorage = querySnapshot?.docs?.map((doc) => {
         if (doc != undefined) {
           return JSON.parse(doc?.data()?.history);
         }
       });
-      if (factsFromStorage) {
-        setAllFacts(factsFromStorage);
+      if (artsFromStorage) {
+        setAllArts(artsFromStorage);
       }
     }
     if (user?.uid != undefined) {
@@ -78,7 +75,7 @@ export const FactGenerator = () => {
 
   const saveHistory = async (history) => {
     try {
-      await addDoc(collection(db, "facts-generator"), {
+      await addDoc(collection(db, "art-generator"), {
         userId: user?.uid,
         history: JSON.stringify(history),
         timestamp: serverTimestamp(),
@@ -117,43 +114,34 @@ export const FactGenerator = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { data } = await getFacts({
-      messages: [
-        {
-          role: "user",
-          content: `Give 5 interesting / fascinating / mind blowing / fun facts about ${fact.prompt} [max 100 words]. Please give an array of facts in this format strictly: ["...", "...", "...", "...", "..."]`,
-        },
-      ],
-    });
-
     setImageLoading(true);
     try {
-      const response = await generateImage({ inputs: fact.prompt });
+      const response = await generateImage({ inputs: art.prompt });
       const imageBase64 = await blobToBase64(response);
 
-      if (data?.choices[0]?.message && response) {
-        const newFact = {
-          ...fact,
-          facts: JSON.parse(data.choices[0].message.content),
+      if (response) {
+        const newArt = {
+          ...art,
           image: imageBase64,
         };
-        const updatedAllFacts = [newFact, ...allFacts];
+        const updatedAllArts = [newArt, ...allArts];
 
-        setFact(newFact);
-        setAllFacts(updatedAllFacts);
-        await saveHistory(newFact);
+        setArt(newArt);
+        setAllArts(updatedAllArts);
+        await saveHistory(newArt);
       }
     } catch (error) {
       setImageError(error);
+      console.log(error);
     } finally {
       setImageLoading(false);
     }
   };
 
-  const handleCopy = (copyFacts) => {
-    setCopied(copyFacts);
-    navigator.clipboard.writeText(copyFacts);
-    toast.success("Copied facts successfully!");
+  const handleCopy = (copyPrompt) => {
+    setCopied(copyPrompt);
+    navigator.clipboard.writeText(copyPrompt);
+    toast.success("Copied prompt successfully!");
     setTimeout(() => setCopied(""), 3000);
   };
 
@@ -175,7 +163,7 @@ export const FactGenerator = () => {
       <MainLayout>
         <section id="visualizer" className="max-w-[720px] w-full mx-auto px-6">
           <Header
-            title="Interesting Facts"
+            title="Art"
             title_="Generator"
             subtitle="Welcome to DigitalHippo. Every asset on our platform is verified by our team to ensure our highest quality standards."
             tool={true}
@@ -192,9 +180,9 @@ export const FactGenerator = () => {
               />
               <input
                 placeholder="Try searching for The Milky Way!"
-                value={fact.prompt}
+                value={art.prompt}
                 onChange={(e) => {
-                  setFact({ ...fact, prompt: e.target.value });
+                  setArt({ ...art, prompt: e.target.value });
                 }}
                 required
                 className="prompt_input peer"
@@ -211,10 +199,10 @@ export const FactGenerator = () => {
               </button>
             </form>
             <div className="flex flex-col gap-1 max-h-60 overflow-y-auto">
-              {allFacts.map((item, index) => (
+              {allArts.map((item, index) => (
                 <div
                   key={`link-${index}`}
-                  onClick={() => setFact(item)}
+                  onClick={() => setArt(item)}
                   className="prompt_card font-satoshi text-sm"
                 >
                   <div className="flex gap-3 items-center">
@@ -235,15 +223,15 @@ export const FactGenerator = () => {
                         className="w-[50%] h-[50%] object-contain"
                       />
                     </div>
-                    <span className="font-semibold">Facts:</span>{" "}
-                    {`${item.facts[0].substring(0, 50)}...`}
+                    <span className="font-semibold">Prompt:</span>{" "}
+                    {`${item.prompt.substring(0, 50)}...`}
                   </div>
                   <div
                     className="copy_btn"
-                    onClick={() => handleCopy(item.facts)}
+                    onClick={() => handleCopy(item.prompt)}
                   >
                     <img
-                      src={copied === item.facts ? tick : copy}
+                      src={copied === item.prompt ? tick : copy}
                       alt="Copy Icon"
                       className="w-[50%] h-[50%] object-contain"
                     />
@@ -255,13 +243,13 @@ export const FactGenerator = () => {
           <div className="my-10 max-w-full flex justify-center items-center">
             <div className="flex flex-col gap-3 w-full">
               <h2 className="font-satoshi font-bold text-gray-600 text-xl">
-                {allFacts.length == 0 || fact.facts.length == 0
+                {allArts.length == 0
                   ? "Let's craft your very first masterpiece!"
-                  : "Presenting you fascinating facts and captivating visuals!"}
+                  : "Presenting you captivating visuals!"}
                 <span className="blue_gradient"></span>
               </h2>
               <div className="result_box">
-                {isLoading || imageLoading ? (
+                {imageLoading ? (
                   <div className="w-full aspect-square flex justify-center items-center">
                     <img
                       src={loader}
@@ -269,32 +257,24 @@ export const FactGenerator = () => {
                       className="w-20 h-20 object-contain"
                     />
                   </div>
-                ) : error || imageError ? (
+                ) : imageError ? (
                   <div className="w-full aspect-square flex justify-center items-center">
                     <p className="font-inter font-bold text-black text-center">
                       Oops, that's unexpected! Give it another shot, and let's
-                      see if the digital dice roll in your favor this time!
+                      see if the digital dice rolls in your favor this time!
                     </p>
                   </div>
                 ) : (
                   <div>
-                    <ol className="list-decimal ml-[25px]">
-                      {fact.facts?.map((item, index) => (
-                        <li key={index} className="mb-2 font-satoshi">
-                          {item.charAt(0).toUpperCase() + item.slice(1)}
-                          {!item.endsWith(".") && "."}
-                        </li>
-                      ))}
-                    </ol>
                     <img
                       src={
-                        fact.facts?.length
-                          ? `data:image/png;base64,${fact.image}`
+                        art.image
+                          ? `data:image/png;base64,${art.image}`
                           : defaultImage
                       }
-                      alt={fact.prompt}
+                      alt={art.prompt}
                       className={`${
-                        fact.facts?.length ? "mt-[24px]" : ""
+                        art.image ? "mt-[24px]" : ""
                       } w-full aspect-square rounded-md object-cover`}
                     />
                   </div>

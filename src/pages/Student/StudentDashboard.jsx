@@ -13,7 +13,7 @@ import {
   citation,
   video,
   thinking,
-  news
+  news,
 } from "../../assets";
 import { MainLayout } from "../../layouts";
 
@@ -36,7 +36,7 @@ const tools = [
     name: "Art Generator",
     detail:
       "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
-    link: "/tool/fact-generator",
+    link: "/tool/art-generator",
     image: art,
   },
   {
