@@ -3,17 +3,19 @@ import { Navbar, Footer } from "../components";
 
 export const MainLayout = ({ bg, children }) => {
   return (
-    <>
+    <div className="flex flex-col w-full">
       <Navbar />
       <div
-        style={{
-        //   backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.99), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url(${bg})`,
-        //   backgroundSize: "auto 100px",
-        }}
+        style={
+          {
+            //   backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.99), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url(${bg})`,
+            //   backgroundSize: "auto 100px",
+          }
+        }
       >
         <div>{children}</div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
