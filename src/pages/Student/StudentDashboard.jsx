@@ -10,6 +10,10 @@ import {
   examples,
   debate,
   writing,
+  citation,
+  video,
+  thinking,
+  news
 } from "../../assets";
 import { MainLayout } from "../../layouts";
 
@@ -68,14 +72,14 @@ const tools = [
     detail:
       "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
     link: "/tool/fact-generator",
-    image: facts,
+    image: thinking,
   },
   {
     name: "Latest News",
     detail:
       "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
     link: "/tool/fact-generator",
-    image: facts,
+    image: news,
   },
   {
     name: "Historical Data",
@@ -96,14 +100,14 @@ const tools = [
     detail:
       "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
     link: "/tool/fact-generator",
-    image: facts,
+    image: video,
   },
   {
     name: "Citation Generator",
     detail:
       "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
     link: "/tool/fact-generator",
-    image: facts,
+    image: citation,
   },
 ];
 

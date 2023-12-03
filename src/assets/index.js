@@ -18,6 +18,12 @@ import writing from "./writing.jpeg";
 import plan from "./plan.jpeg";
 import ppt from "./ppt.jpeg";
 import quiz from "./quiz.jpeg";
+import citation from "./citation.jpeg";
+import news from "./news.jpeg";
+import video from "./video.jpeg";
+import thinking from "./thinking.jpeg";
+import prep from "./prep.jpeg";
+import worksheet from "./worksheet.jpeg";
 import factsBg from "./facts-bg.jpeg";
 
 export {
@@ -41,5 +47,11 @@ export {
   plan,
   ppt,
   quiz,
+  citation,
+  video,
+  news,
+  thinking,
+  prep,
+  worksheet,
   factsBg,
 };
