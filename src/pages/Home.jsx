@@ -2,7 +2,7 @@ import React from "react";
 import { Navbar, Footer, Faqs, Pricing } from "../components";
 import { Link } from "react-router-dom";
 import { ArrowDownToLine, CheckCircle, Leaf } from "lucide-react";
-import { logo } from "../assets";
+import { logo, pricinglogo } from "../assets";
 
 const pricingHeading = "Choose Your Plan";
 const pricingSubheading = "Flexible Pricing Options for Every User";
@@ -19,7 +19,7 @@ const plans = [
       "Access to Unlocked Models",
     ],
     button: "Get Started for Free",
-    image: <img src={logo} width={32} height={32} alt="Starter Plan" />,
+    image: <img src={pricinglogo} width={28} height={28} alt="Starter Plan" />,
   },
   {
     name: "Weekly",
@@ -32,7 +32,7 @@ const plans = [
       "Access to All Models",
     ],
     button: "Subscribe",
-    image: <img src={logo} width={32} height={32} alt="Weekly Plan" />,
+    image: <img src={pricinglogo} width={28} height={28} alt="Weekly Plan" />,
   },
   {
     name: "Monthly",
@@ -46,7 +46,7 @@ const plans = [
       "Access to All Models",
     ],
     button: "Subscribe",
-    image: <img src={logo} width={32} height={32} alt="Monthly Plan" />,
+    image: <img src={pricinglogo} width={28} height={28} alt="Monthly Plan" />,
   },
 ];
 

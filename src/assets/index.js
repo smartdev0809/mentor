@@ -18,6 +18,7 @@ import s17 from "./17.svg";
 import s18 from "./18.svg";
 import s19 from "./19.svg";
 import loader from "./loader.svg";
+import pricinglogo from "./pricing-logo.svg";
 import link from "./link.svg";
 import copy from "./copy.svg";
 import tick from "./tick.svg";
@@ -97,5 +98,6 @@ export {
   thinking,
   prep,
   worksheet,
+  pricinglogo,
   factsBg,
 };
