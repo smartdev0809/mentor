@@ -1,14 +1,14 @@
 import React from "react";
 import { Reveal, Tool, Header } from "../../components";
 import { MainLayout } from "../../layouts";
-import { facts, plan, ppt, quiz, prep, worksheet } from "../../assets";
+import { plan, ppt, quiz, prep, worksheet, examples } from "../../assets";
 
 const tools = [
   {
     name: "Lesson Plan Generator",
     detail:
       "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
-    link: "/tool/fact-generator",
+    link: "/tool/lesson-plan-generator",
     image: plan,
   },
   {
@@ -19,10 +19,17 @@ const tools = [
     image: ppt,
   },
   {
+    name: "Examples & Analogies Generator",
+    detail:
+      "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
+    link: "/tool/examples-generator",
+    image: examples,
+  },
+  {
     name: "Quiz Generator",
     detail:
       "Enter a topic or keyword that piques your curiosity, and we'll uncover fascinating facts and a captivating image.",
-    link: "/tool/fact-generator",
+    link: "/tool/quiz-generator",
     image: quiz,
   },
   {

@@ -91,7 +91,7 @@ export const Home = () => {
             <div className="py-20 mx-auto text-center flex flex-col items-center max-w-3xl">
               <h1 className="text-5xl font-extrabold tracking-tight text-gray-900">
                 Your marketplace for high-quality&nbsp;
-                <span className="text-[var(--primary)]">digital assets</span>.
+                <span className="orange_gradient">digital assets</span>.
               </h1>
               <p className="mt-6 text-lg max-w-prose text-gray-600">
                 Welcome to DigitalHippo. Every asset on our platform is verified

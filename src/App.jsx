@@ -14,9 +14,12 @@ import { Toaster } from "react-hot-toast";
 import {
   FactGenerator,
   ArtGenerator,
-  ExamplesAnalogiesGenerator,
+  CreativeWritingReviewer,
+  PairProgrammer,
   LessonPlanGenerator,
   ArticleSummarizer,
+  ExamplesAnalogiesGenerator,
+  QuizGenerator,
 } from "./pages/Tools";
 
 function App() {
@@ -39,6 +42,15 @@ function App() {
               <Route path="/verify-email" Component={VerifyEmail} />
               <Route path="/tool/fact-generator" Component={FactGenerator} />
               <Route path="/tool/art-generator" Component={ArtGenerator} />
+              <Route path="/tool/pair-programmer" Component={PairProgrammer} />
+              <Route
+                path="/tool/creative-writing-reviewer"
+                Component={CreativeWritingReviewer}
+              />
+              <Route
+                path="/tool/lesson-plan-generator"
+                Component={LessonPlanGenerator}
+              />
               <Route
                 path="/tool/article-summarizer"
                 Component={ArticleSummarizer}
@@ -47,6 +59,7 @@ function App() {
                 path="/tool/examples-generator"
                 Component={ExamplesAnalogiesGenerator}
               />
+              <Route path="/tool/quiz-generator" Component={QuizGenerator} />
               <Route
                 path="/tool/lesson-plan-generator"
                 Component={LessonPlanGenerator}

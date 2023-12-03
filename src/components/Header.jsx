@@ -11,7 +11,7 @@ export const Header = ({ title, title_, subtitle, tool = false }) => {
       >
         <h1 className="text-5xl font-extrabold tracking-tight text-gray-900">
           {title}&nbsp;
-          <span className="text-[var(--primary)]">{title_}</span>
+          <span className="orange_gradient">{title_}</span>
         </h1>
         <p className="mt-6 text-lg max-w-prose text-gray-600">{subtitle}</p>
       </div>
