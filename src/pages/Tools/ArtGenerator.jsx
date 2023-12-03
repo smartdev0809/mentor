@@ -35,8 +35,6 @@ export const ArtGenerator = () => {
   });
   const [allArts, setAllArts] = useState([]);
   const [copied, setCopied] = useState("");
-  const [imageLoading, setImageLoading] = useState(false);
-  const [imageError, setImageError] = useState(null);
   const [getArts, { error, isLoading }] = useGetArtsMutation();
 
   const [user, setUser] = useState(null);
@@ -87,48 +85,22 @@ export const ArtGenerator = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setImageLoading(true);
-    try {
-      const { data } = await getArts({
-        prompt: art.prompt,
-      });
-      console.log(data);
+    const { data } = await getArts({
+      prompt: art.prompt,
+    });
 
-      const imageBase64 = data?.data[0]?.b64_json;
-      // const image_url =
-      //   "https://oaidalleapiprodscus.blob.core.windows.net/private/org-KOxdigaEKKZNvxJTjubzwPwe/user-BzI5HwanyLMF7x20dwrurVAg/img-ZH9AgomYVCIlITD92gckuCdn.png?st=2023-12-03T10%3A52%3A19Z&se=2023-12-03T12%3A52%3A19Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-12-02T22%3A39%3A42Z&ske=2023-12-03T22%3A39%3A42Z&sks=b&skv=2021-08-06&sig=MjgRKXEzeVkfNjYS/OrNlIbFb7pCuthCxlCRNpDTuBk%3D";
+    const imageBase64 = data?.data[0]?.b64_json;
 
-      // const convertImageToBlob = async (imageUrl) => {
-      // let blobUrl;
-      // try {
-      //   const response = await fetch(image_url);
-      //   const imageData = await response.blob();
-      //   blobUrl = URL.createObjectURL(imageData);
-      //   console.log(blobUrl);
-      // } catch (error) {
-      //   console.error("Error converting image to Blob:", error);
-      // }
+    if (imageBase64) {
+      const newArt = {
+        ...art,
+        image: imageBase64,
+      };
+      const updatedAllArts = [newArt, ...allArts];
 
-      // const imageBase64 = await blobToBase64(blobUrl);
-      console.log(imageBase64);
-      // };
-
-      if (imageBase64) {
-        const newArt = {
-          ...art,
-          image: imageBase64,
-        };
-        const updatedAllArts = [newArt, ...allArts];
-
-        setArt(newArt);
-        setAllArts(updatedAllArts);
-        await saveHistory(newArt);
-      }
-    } catch (error) {
-      setImageError(error);
-      console.log(error);
-    } finally {
-      setImageLoading(false);
+      setArt(newArt);
+      setAllArts(updatedAllArts);
+      await saveHistory(newArt);
     }
   };
 
@@ -137,17 +109,6 @@ export const ArtGenerator = () => {
     navigator.clipboard.writeText(copyPrompt);
     toast.success("Copied prompt successfully!");
     setTimeout(() => setCopied(""), 3000);
-  };
-
-  const blobToBase64 = (blob) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        resolve(reader.result.split(",")[1]);
-      };
-      reader.onerror = reject;
-      reader.readAsDataURL(blob);
-    });
   };
 
   const downloadImage = async (image, prompt) => {
@@ -254,7 +215,7 @@ export const ArtGenerator = () => {
                 <span className="blue_gradient"></span>
               </h2>
               <div className="result_box">
-                {imageLoading ? (
+                {isLoading ? (
                   <div className="w-full aspect-square flex justify-center items-center">
                     <img
                       src={loader}
@@ -262,7 +223,7 @@ export const ArtGenerator = () => {
                       className="w-20 h-20 object-contain"
                     />
                   </div>
-                ) : imageError ? (
+                ) : error ? (
                   <div className="w-full aspect-square flex justify-center items-center">
                     <p className="font-inter font-bold text-black text-center">
                       Oops, that's unexpected! Give it another shot, and let's

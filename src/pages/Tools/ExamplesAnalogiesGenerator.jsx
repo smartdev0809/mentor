@@ -1,13 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  copy,
-  loader,
-  tick,
-  defaultImage,
-  curious,
-  download,
-  search,
-} from "../../assets";
+import { copy, loader, tick, curious, download, search } from "../../assets";
 import { useGetAnswerMutation } from "../../services";
 import toast from "react-hot-toast";
 import { auth, db } from "../../../firebase";
