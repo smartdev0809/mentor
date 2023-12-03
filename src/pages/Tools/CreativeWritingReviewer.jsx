@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { copy, loader, tick, curious, download, search } from "../../assets";
+import { copy, loader, tick, curious, search } from "../../assets";
 import { useGetAnswerMutation } from "../../services";
 import toast from "react-hot-toast";
 import { auth, db } from "../../../firebase";
@@ -44,7 +44,7 @@ export const CreativeWritingReviewer = () => {
     async function fetchData() {
       const querySnapshot = await getDocs(
         query(
-          collection(db, "examples-generator"),
+          collection(db, "creative-writing-reviewer"),
           where("userId", "==", user?.uid),
           orderBy("timestamp", "desc"),
           limit(50)
@@ -66,7 +66,7 @@ export const CreativeWritingReviewer = () => {
 
   const saveHistory = async (history) => {
     try {
-      await addDoc(collection(db, "examples-generator"), {
+      await addDoc(collection(db, "creative-writing-reviewer"), {
         userId: user?.uid,
         history: JSON.stringify(history),
         timestamp: serverTimestamp(),
@@ -83,14 +83,15 @@ export const CreativeWritingReviewer = () => {
       messages: [
         {
           role: "user",
-          content: `You are a friendly and helpful instructional designer who helps teachers develop effective explanations, analogies and examples in a straightforward way. Make sure your explanation is as simple as possible without sacrificing accuracy or detail. ${
+          content: `You are a friendly and helpful mentor whose goal is to give students feedback to improve their work. ${
             result.input1 &&
-            `The learning level of the students is ${result.input1}.`
+            `The learning level of the student is ${result.input1} so you can tailor your feedback accordingly.`
           } ${
-            result.input2 && `Additionally note that ${result.input2}.`
-          } Give the teacher a clear and simple 2-paragraph explanation of the topic "${
+            result.input2 &&
+            `The goal of the student for this work is ${result.input2}.`
+          } Give them feedback about their work based on their goal and their learning level. The feedback should also include headings of strengths as well as areas of improvement. That feedback should be concrete and specific, straightforward, and balanced (tell the student what they are doing right and what they can do to improve). Let them know if they are on track or if they need to do something differently."${
             result.prompt
-          }", 2 examples, and an analogy. Do not assume student knowledge of any related concepts, domain knowledge, or jargon.`,
+          }"`,
         },
       ],
     });
@@ -134,7 +135,7 @@ export const CreativeWritingReviewer = () => {
                 className="absolute left-0 my-3 ml-3 w-5"
               />
               <textarea
-                placeholder="Tell me the learning level of your students (grade level, college, or professional)."
+                placeholder="What is your learning level (high school, college, or professional)?"
                 onChange={(e) => {
                   setResult({ ...result, input1: e.target.value });
                 }}
@@ -151,7 +152,7 @@ export const CreativeWritingReviewer = () => {
                 className="absolute left-0 my-3 ml-3 w-5"
               />
               <textarea
-                placeholder="How does this particular concept or topic fit into your curriculum and what do students already know about the topic?"
+                placeholder="What is your goal for this work or what are you trying to achieve?"
                 onChange={(e) => {
                   setResult({ ...result, input2: e.target.value });
                 }}
@@ -162,7 +163,7 @@ export const CreativeWritingReviewer = () => {
               />
             </div>
             <form
-              className="relative flex justify-center items-center w-full"
+              className="relative flex justify-center items-start w-full"
               onSubmit={handleSubmit}
             >
               <img
@@ -170,18 +171,19 @@ export const CreativeWritingReviewer = () => {
                 alt="Curious Icon"
                 className="absolute left-0 my-2 ml-3 w-5"
               />
-              <input
-                placeholder="What topic or concept do you want to explain?"
+              <textarea
+                placeholder="Share your work (an essay, a project plan, whatever it is). "
                 value={result.prompt}
                 onChange={(e) => {
                   setResult({ ...result, prompt: e.target.value });
                 }}
                 required
                 className="prompt_input peer"
+                rows={5}
               />
               <button
                 type="submit"
-                className="submit_btn peer-focus:border-gray-700 peer-focus:text-gray-700"
+                className="submit_btn peer-focus:border-gray-700 peer-focus:text-gray-700 h-[30px]"
               >
                 <img
                   src={search}
@@ -198,35 +200,18 @@ export const CreativeWritingReviewer = () => {
                   className="prompt_card font-satoshi text-sm"
                 >
                   <div className="flex gap-3 items-center">
-                    {/* <div key={index} className="image_card">
-                      <img
-                        src={`data:image/png;base64,${item.image}`}
-                        alt={item.prompt}
-                        className="w-full h-full object-cover rounded-md"
-                      />
-                    </div> */}
                     <div
                       className="copy_btn"
-                      onClick={() => downloadImage(item.image, item.prompt)}
+                      onClick={() => handleCopy(item.answer)}
                     >
                       <img
-                        src={download}
-                        alt="Download Icon"
+                        src={copied === item.answer ? tick : copy}
+                        alt="Copy Icon"
                         className="w-[50%] h-[50%] object-contain"
                       />
                     </div>
-                    <span className="font-semibold">{item.prompt}:</span>{" "}
+                    <span className="font-semibold">Feedback:</span>{" "}
                     {`${item.answer.substring(0, 50)}...`}
-                  </div>
-                  <div
-                    className="copy_btn"
-                    onClick={() => handleCopy(item.answer)}
-                  >
-                    <img
-                      src={copied === item.answer ? tick : copy}
-                      alt="Copy Icon"
-                      className="w-[50%] h-[50%] object-contain"
-                    />
                   </div>
                 </div>
               ))}
@@ -237,7 +222,7 @@ export const CreativeWritingReviewer = () => {
               <h2 className="font-satoshi font-bold text-gray-600 text-xl">
                 {allResults.length == 0 || !result.answer
                   ? "Let's craft your very first masterpiece!"
-                  : "Presenting you fascinating examples and analogies!"}
+                  : "Generating constructive feedback for your work!"}
                 <span className="blue_gradient"></span>
               </h2>
               <div className={`result_box ${result.answer ? "bg-white" : ""}`}>

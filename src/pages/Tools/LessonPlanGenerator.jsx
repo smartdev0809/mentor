@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { copy, loader, tick, curious, download, search } from "../../assets";
+import { copy, loader, tick, curious, search } from "../../assets";
 import { useGetAnswerMutation } from "../../services";
 import toast from "react-hot-toast";
 import { auth, db } from "../../../firebase";
@@ -25,6 +25,7 @@ export const LessonPlanGenerator = () => {
     prompt: "",
     input1: "",
     input2: "",
+    input3: "",
     answer: "",
   });
   const [allResults, setAllResults] = useState([]);
@@ -44,7 +45,7 @@ export const LessonPlanGenerator = () => {
     async function fetchData() {
       const querySnapshot = await getDocs(
         query(
-          collection(db, "examples-generator"),
+          collection(db, "lesson-plan-generator"),
           where("userId", "==", user?.uid),
           orderBy("timestamp", "desc"),
           limit(50)
@@ -66,7 +67,7 @@ export const LessonPlanGenerator = () => {
 
   const saveHistory = async (history) => {
     try {
-      await addDoc(collection(db, "examples-generator"), {
+      await addDoc(collection(db, "lesson-plan-generator"), {
         userId: user?.uid,
         history: JSON.stringify(history),
         timestamp: serverTimestamp(),
@@ -83,14 +84,15 @@ export const LessonPlanGenerator = () => {
       messages: [
         {
           role: "user",
-          content: `You are a friendly and helpful instructional designer who helps teachers develop effective explanations, analogies and examples in a straightforward way. Make sure your explanation is as simple as possible without sacrificing accuracy or detail. ${
+          content: `You are a friendly and helpful instructional coach helping teachers plan a lesson. ${
             result.input1 &&
             `The learning level of the students is ${result.input1}.`
-          } ${
-            result.input2 && `Additionally note that ${result.input2}.`
-          } Give the teacher a clear and simple 2-paragraph explanation of the topic "${
+          } ${result.input2 && `Additionally note that ${result.input2}.`} ${
+            result.input3 &&
+            `The learning goal of the lesson is ${result.input3}.`
+          } Given all of this information, create a customized lesson plan for the topic "${
             result.prompt
-          }", 2 examples, and an analogy. Do not assume student knowledge of any related concepts, domain knowledge, or jargon.`,
+          }" that includes a variety of teaching techniques and modalities including direct instruction, checking for understanding (including gathering evidence of understanding from a wide sampling of students), discussion, an engaging in-class activity, and an assignment. Explain why you are specifically choosing each.`,
         },
       ],
     });
@@ -151,7 +153,7 @@ export const LessonPlanGenerator = () => {
                 className="absolute left-0 my-3 ml-3 w-5"
               />
               <textarea
-                placeholder="How does this particular concept or topic fit into your curriculum and what do students already know about the topic?"
+                placeholder="Do the students have existing knowledge about the topic or is this an entirely new topic? If students have existing knowledge about the topic, please explain what the students know about it."
                 onChange={(e) => {
                   setResult({ ...result, input2: e.target.value });
                 }}
@@ -159,6 +161,23 @@ export const LessonPlanGenerator = () => {
                 className="prompt_input peer"
                 rows={3}
                 value={result.input2}
+              />
+            </div>
+            <div className="relative flex justify-center items-start w-full">
+              <img
+                src={curious}
+                alt="Curious Icon"
+                className="absolute left-0 my-3 ml-3 w-5"
+              />
+              <textarea
+                placeholder="What is your learning goal for the lesson; that is what would you like students to understand or be able to do after the lesson?"
+                onChange={(e) => {
+                  setResult({ ...result, input3: e.target.value });
+                }}
+                required
+                className="prompt_input peer"
+                rows={3}
+                value={result.input3}
               />
             </div>
             <form
@@ -171,7 +190,7 @@ export const LessonPlanGenerator = () => {
                 className="absolute left-0 my-2 ml-3 w-5"
               />
               <input
-                placeholder="What topic or concept do you want to explain?"
+                placeholder="What topic do you want to teach?"
                 value={result.prompt}
                 onChange={(e) => {
                   setResult({ ...result, prompt: e.target.value });
@@ -198,20 +217,13 @@ export const LessonPlanGenerator = () => {
                   className="prompt_card font-satoshi text-sm"
                 >
                   <div className="flex gap-3 items-center">
-                    {/* <div key={index} className="image_card">
-                      <img
-                        src={`data:image/png;base64,${item.image}`}
-                        alt={item.prompt}
-                        className="w-full h-full object-cover rounded-md"
-                      />
-                    </div> */}
                     <div
                       className="copy_btn"
-                      onClick={() => downloadImage(item.image, item.prompt)}
+                      onClick={() => handleCopy(item.answer)}
                     >
                       <img
-                        src={download}
-                        alt="Download Icon"
+                        src={copied === item.answer ? tick : copy}
+                        alt="Copy Icon"
                         className="w-[50%] h-[50%] object-contain"
                       />
                     </div>
@@ -237,7 +249,7 @@ export const LessonPlanGenerator = () => {
               <h2 className="font-satoshi font-bold text-gray-600 text-xl">
                 {allResults.length == 0 || !result.answer
                   ? "Let's craft your very first masterpiece!"
-                  : "Presenting you fascinating examples and analogies!"}
+                  : "Presenting you a comprehensive lesson plan!"}
                 <span className="blue_gradient"></span>
               </h2>
               <div className={`result_box ${result.answer ? "bg-white" : ""}`}>
