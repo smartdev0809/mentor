@@ -58,15 +58,13 @@ export const Register = ({ role }) => {
       >
         <p className="flex justify-center">
           <Link href="/">
-            <img src={logo} className="h-20 w-20" alt="Logo" />
+            <img src={logo} className="h-12" alt="Logo" />
           </Link>
         </p>
         <div className="flex flex-col gap-1.5">
           <h2 className="text-lg text-gray-600">Create your account</h2>
           <h6 className="text-base text-[var(--primary)]">
-            <Link to={`/${role}/signin`}>
-              Already have an account? Signin.
-            </Link>
+            <Link to={`/${role}/signin`}>Already have an account? Signin.</Link>
           </h6>
         </div>
         <div className="flex flex-col gap-3">

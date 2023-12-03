@@ -73,7 +73,7 @@ export const Login = ({ role }) => {
       >
         <p className="flex justify-center">
           <Link href="/">
-            <img src={logo} className="h-20 w-20" alt="Logo" />
+            <img src={logo} className="h-12" alt="Logo" />
           </Link>
         </p>
         <div className="flex flex-col gap-1.5">
