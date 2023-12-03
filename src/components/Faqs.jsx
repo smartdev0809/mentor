@@ -52,7 +52,7 @@ export const Faqs = ({ faqs }) => {
                           }`}
                         />
                       </Disclosure.Button>
-                      <Disclosure.Panel className="pt-6 pb-8 px-5 text-base max-w-prose text-gray-600">
+                      <Disclosure.Panel className="pt-6 pb-8 px-5 text-base text-gray-600">
                         {item.answer}
                       </Disclosure.Panel>
                     </>
