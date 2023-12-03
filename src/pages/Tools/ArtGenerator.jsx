@@ -25,19 +25,19 @@ import {
 import "./StudentTools.css";
 import { MainLayout } from "../../layouts";
 import { Header, SideCol } from "../../components";
-
-const huggingFaceToken = import.meta.env.VITE_HUGGING_FACE_TOKEN;
+import { useGetArtsMutation } from "../../services";
 
 export const ArtGenerator = () => {
   const navigate = useNavigate();
   const [art, setArt] = useState({
     prompt: "",
-    image: null,
+    image: "",
   });
   const [allArts, setAllArts] = useState([]);
   const [copied, setCopied] = useState("");
   const [imageLoading, setImageLoading] = useState(false);
   const [imageError, setImageError] = useState(null);
+  const [getArts, { error, isLoading }] = useGetArtsMutation();
 
   const [user, setUser] = useState(null);
 
@@ -84,44 +84,21 @@ export const ArtGenerator = () => {
     }
   };
 
-  const generateImage = async (data) => {
-    const response = await fetch(
-      "https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5",
-      {
-        headers: {
-          Authorization: `Bearer ${huggingFaceToken}`,
-        },
-        method: "POST",
-        body: JSON.stringify(data),
-      }
-    );
-    const result = await response.blob();
-    return result;
-  };
-
-  const blobToBase64 = (blob) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        resolve(reader.result.split(",")[1]);
-      };
-      reader.onerror = reject;
-      reader.readAsDataURL(blob);
-    });
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     setImageLoading(true);
     try {
-      const response = await generateImage({ inputs: art.prompt });
-      const imageBase64 = await blobToBase64(response);
+      const { data } = await getArts({
+        prompt: art.prompt,
+      });
 
-      if (response) {
+      const image_url = data?.data[0]?.url;
+
+      if (image_url) {
         const newArt = {
           ...art,
-          image: imageBase64,
+          image: image_url,
         };
         const updatedAllArts = [newArt, ...allArts];
 
@@ -147,8 +124,9 @@ export const ArtGenerator = () => {
   const downloadImage = async (image, prompt) => {
     try {
       const link = document.createElement("a");
-      link.href = `data:image/png;base64,${image}`;
-      link.download = prompt;
+      link.href = image;
+      link.setAttribute("download", `${prompt}.png`);
+      document.body.appendChild(link);
       link.click();
       toast.success("Image downloaded successfully!");
     } catch (error) {
@@ -207,7 +185,7 @@ export const ArtGenerator = () => {
                   <div className="flex gap-3 items-center">
                     <div key={index} className="image_card">
                       <img
-                        src={`data:image/png;base64,${item.image}`}
+                        src={item.image}
                         alt={item.prompt}
                         className="w-full h-full object-cover rounded-md"
                       />
@@ -266,11 +244,7 @@ export const ArtGenerator = () => {
                 ) : (
                   <div>
                     <img
-                      src={
-                        art.image
-                          ? `data:image/png;base64,${art.image}`
-                          : defaultImage
-                      }
+                      src={art.image ? art.image : defaultImage}
                       alt={art.prompt}
                       className={`${
                         art.image ? "mt-[24px]" : ""
