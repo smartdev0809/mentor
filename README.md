@@ -32,12 +32,6 @@ You can view video demo here: https://youtu.be/54hMz43nSiA
 
 # How to run
 
-In order to run the code follow the steps below:
-
-```shell
-yarn install-all && yarn start
-```
-
 To use this project, follow the steps:
 
 1. Clone the repository.
