@@ -8,7 +8,7 @@ import {
   download,
   search,
 } from "../../assets";
-import { useGetAnswerMutation } from "../../services";
+import { useGetAnswerMutation, useGetArtsMutation } from "../../services";
 import toast from "react-hot-toast";
 import { auth, db } from "../../../firebase";
 import { onAuthStateChanged } from "firebase/auth";
@@ -26,7 +26,6 @@ import {
 import "./StudentTools.css";
 import { MainLayout } from "../../layouts";
 import { Header, SideCol } from "../../components";
-import { useGetArtsMutation } from "../../services";
 
 export const FactGenerator = () => {
   const navigate = useNavigate();
