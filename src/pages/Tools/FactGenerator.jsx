@@ -26,8 +26,7 @@ import {
 import "./StudentTools.css";
 import { MainLayout } from "../../layouts";
 import { Header, SideCol } from "../../components";
-
-const huggingFaceToken = import.meta.env.VITE_HUGGING_FACE_TOKEN;
+import { useGetArtsMutation } from "../../services";
 
 export const FactGenerator = () => {
   const navigate = useNavigate();
@@ -39,8 +38,8 @@ export const FactGenerator = () => {
   const [allFacts, setAllFacts] = useState([]);
   const [copied, setCopied] = useState("");
   const [getFacts, { error, isLoading }] = useGetAnswerMutation();
-  const [imageLoading, setImageLoading] = useState(false);
-  const [imageError, setImageError] = useState(null);
+  const [getArts, { error: imageError, isLoading: imageLoading }] =
+    useGetArtsMutation();
 
   const [user, setUser] = useState(null);
 
@@ -90,19 +89,21 @@ export const FactGenerator = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { data } = await getFacts({
-      messages: [
-        {
-          role: "user",
-          content: `Give 5 interesting / fascinating / mind blowing / fun facts about ${fact.prompt} [max 100 words]. Please give an array of facts in this format strictly: ["...", "...", "...", "...", "..."]`,
-        },
-      ],
-    });
-
-    setImageLoading(true);
     try {
-      const response = await generateImage({ inputs: fact.prompt });
-      const imageBase64 = await blobToBase64(response);
+      const { data } = await getFacts({
+        messages: [
+          {
+            role: "user",
+            content: `Give 5 interesting / fascinating / mind blowing / fun facts about ${fact.prompt} [max 100 words]. Please give an array of facts in this format strictly: ["...", "...", "...", "...", "..."]`,
+          },
+        ],
+      });
+
+      const response = await getArts({
+        prompt: fact.prompt,
+      });
+
+      const imageBase64 = response?.data?.data[0]?.b64_json;
 
       if (data?.choices[0]?.message && response) {
         const newFact = {
@@ -117,9 +118,7 @@ export const FactGenerator = () => {
         await saveHistory(newFact);
       }
     } catch (error) {
-      setImageError(error);
-    } finally {
-      setImageLoading(false);
+      console.log(error);
     }
   };
 
