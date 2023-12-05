@@ -1,6 +1,6 @@
 <p align="center">
     <picture>
-    <img width="250" alt="Plurality icon." src="https://raw.githubusercontent.com/Fatima-Mujahid/mentor-sphere/96d1a0569ef1099135dded24dfdbf364502035c0/src/assets/logo.svg">
+    <img width="250" alt="Plurality icon." src="https://mentor-sphere.vercel.app/assets/logo-AWDzjBq0.svg">
     </picture>
 </p>
 
